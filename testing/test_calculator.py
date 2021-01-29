@@ -84,6 +84,30 @@ class TestCalc:
         with pytest.raises(ZeroDivisionError):
             self.calc.div(a, b)
 
+    @pytest.mark.parametrize("a, b, expect", datas_mul[0], ids=datas_mul[1])
+    def test_mul(self, a, b, expect):
+        print(f"a={a}, b={b}, result={expect}")
+        assert expect == self.calc.mul(a, b)
+
+    @pytest.mark.parametrize("a, b, expect", [
+        [0.11, 0.12, 0.01], [0.1, 0.2, 0.02]
+    ])
+    def test_mul_float(self, a, b, expect):
+        print(f"a={a}, b={b}, result={expect}")
+        assert expect == round(self.calc.mul(a, b), 2)
+
+
+    @pytest.mark.parametrize("a, b, expect", datas_sub[0], ids=datas_sub[1])
+    def test_sub(self, a, b, expect):
+        print(f"a={a}, b={b}, result={expect}")
+        assert expect == self.calc.sub(a, b)
+
+    @pytest.mark.parametrize("a, b, expect", [
+        [0.11, 0.12, -0.01], [0.1, 0.2, -0.1]
+    ])
+    def test_sub_float(self, a, b, expect):
+        print(f"a={a}, b={b}, result={expect}")
+        assert expect == round(self.calc.sub(a, b), 2)
 
 if __name__ == '__main__':
     pytest.main(["-v","-s"])
