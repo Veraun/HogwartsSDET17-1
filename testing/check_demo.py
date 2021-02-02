@@ -4,5 +4,5 @@
 # @Author  : Warren.wang
 # @File    : check_demo.py
 # @Software: PyCharm
-import pytest
-
+def check_aaa():
+    print("测试 pytest.ini")
