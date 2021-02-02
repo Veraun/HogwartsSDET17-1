@@ -47,6 +47,7 @@ class TestCalc:
         print(f"a={a}, b={b}, result={expect}")
         assert expect == self.calc.add(a, b)
 
+    #浮点数：特殊处理
     @pytest.mark.parametrize("a, b, expect", [
         [0.11,0.12,0.23],[0.1,0.2,0.3]
     ])
@@ -81,7 +82,7 @@ class TestCalc:
     ])
     def test_div_zero(self, a, b):
         print(f"a={a}, b={b}")
-        with pytest.raises(ZeroDivisionError):
+        with pytest.raises(ZeroDivisionError): #抛出这个异常ZeroDivisionError
             self.calc.div(a, b)
 
     @pytest.mark.parametrize("a, b, expect", datas_mul[0], ids=datas_mul[1])
