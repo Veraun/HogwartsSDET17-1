@@ -66,5 +66,5 @@ class TestCalc:
     # 除数为0
     @pytest.mark.parametrize("a, b, result", div_int_data[0], ids=div_int_data[1])
     def test_div_0(self, get_instance, a, b, result):
-        with pytest.raises(ZeroDivisionError, TypeError):
+        with pytest.raises(ZeroDivisionError):
             result = get_instance.div(a, b)

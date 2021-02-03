@@ -23,9 +23,23 @@ def login():
     print("登出操作>>>")
     # return token
 
-
-
+#内置插件，只是重写方法  （hook函数）
+#解决打印用例编码问题
 def pytest_collection_modifyitems(
     session: "Session", config: "Config", items: List["Item"]
 ) -> None:
-    pass
+    print(items)
+    for item in items:
+        '''
+        u = '中文' #指定字符串类型对象u
+        str = u.encode('gb2312') #以gb2312编码对u进行编码，获得bytes类型对象str
+        u1 = str.decode('gb2312')#以gb2312编码对字符串str进行解码，获得字符串类型对象u1
+        u2 = str.decode('utf-8')#如果以utf-8的编码对str进行解码得到的结果，将无法还原原来的字符串内容
+        '''
+        item.name = item.name.encode("utf-8").decode("unicode-escape")
+        item._nodeid = item.nodeid.encode("utf-8").decode("unicode-escape")
+
+    #     if "add" in item._nodeid:
+    #         item.add_marker(pytest.mark.add)
+    #
+    # item.reverse()
