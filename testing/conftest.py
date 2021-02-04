@@ -15,14 +15,47 @@ from typing import List
 import pytest
 import yaml
 
+@pytest.fixture(scope='session', autouse=True)
+def conn_db():
+    print("完成 数据库连接")
+    yield "database"
+    print("关闭 数据库连接")
 
-@pytest.fixture(scope="session")
-def login():
-    print("登录操作>>>>")
-    token = datetime.datetime.now()
-    yield token  #yield相当于return
-    print("登出操作>>>")
-    # return token
+@pytest.fixture(scope="function", params=['tom', 'jerry'])
+def login(request):
+    # setup 操作
+    print("登录操作")
+    username = request.param
+    # yield 相当于return 操作
+    yield username
+    # teardown操作
+    print("登出操作")
+
+#命令行
+def pytest_addoption(parser):
+    mygroup = parser.getgroup("hogwarts-Warron")  # 下面所有的 option都展示在这个group下。
+    mygroup.addoption("--env",  # 注册一个命令行选项
+                      default='test',  # 默认值
+                      dest='env',  # 存储的变量
+                      help='set your run env'  # 参数说明
+                      )
+
+@pytest.fixture(scope='session')
+def cmdoption(request):
+    myenv = request.config.getoption("--env", default='test')
+
+    if myenv == 'test':
+        datapath = "datas/test/data.yml"
+    elif myenv == 'dev':
+        datapath = "datas/dev/data.yml"
+
+    with open(datapath) as f:
+        datas = yaml.safe_load(f)
+
+    print(datas)
+
+    return myenv, datas
+
 
 #内置插件，只是重写方法  （hook函数）
 #解决打印用例编码问题
