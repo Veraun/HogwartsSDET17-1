@@ -1,0 +1,6 @@
+Thu, 04 Feb 2021 14:21:38 __init__.py[line:28] INFO item.name : test_encode[¹şÀû]
+Thu, 04 Feb 2021 14:21:38 __init__.py[line:29] INFO item._nodeid : tests/test_encode.py::test_encode[¹şÀû]
+Thu, 04 Feb 2021 14:21:38 __init__.py[line:28] INFO item.name : test_encode[ºÕÃô]
+Thu, 04 Feb 2021 14:21:38 __init__.py[line:29] INFO item._nodeid : tests/test_encode.py::test_encode[ºÕÃô]
+Thu, 04 Feb 2021 14:21:38 test_encode.py[line:8] INFO test data: ¹şÀû
+Thu, 04 Feb 2021 14:21:38 test_encode.py[line:8] INFO test data: ºÕÃô

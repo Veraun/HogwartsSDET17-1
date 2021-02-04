@@ -27,3 +27,7 @@ def pytest_collection_modifyitems(items):
         item._nodeid = item._nodeid.encode('utf-8').decode('unicode_escape')
         logger.info(f"item.name : {item.name}")
         logger.info(f"item._nodeid : {item._nodeid}")
+        if "add" in item._nodeid:
+            item.add_marker(pytest.mark.add)
+        elif 'div' in item._nodeid:
+            item.add_marker(pytest.mark.div)

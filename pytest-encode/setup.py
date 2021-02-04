@@ -9,7 +9,7 @@ setup(
     name='pytest_encode',
     url='https://github.com/xxx/pytest-encode',
     version='1.0',
-    author="Warron",
+    author="Warron.Wang",
     author_email='806881231@qq.com',
     description='set your encoding and logger',
     long_description='Show Chinese for your mark.parametrize(). Define logger variable for getting your log',

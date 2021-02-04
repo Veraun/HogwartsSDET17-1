@@ -37,3 +37,13 @@ pytest：https://docs.pytest.org/en/stable/getting-started.html
   - 随意使用以下命令安装此插件：
     - pip install dist/pytest_encode-1.0-py3-none-any.whl
   - 安装后，您可以很高兴地检查生成的日志并在代码egids中使用中文
+  
+## 使用Allure报告
+- 1. 安装 allure2
+- 2. Allure help  帮助文档 
+- 3. 生成 allure 测试结果 ：切到用例执行文件下，如testing文件下。
+  - pytest —alluredir=./report/allure_results
+- 4. 展示报告：allure serve ./report/allure_results
+- 5. 生成最终版本的报告：   allure generate ./report/allure_results
+- 6. 在本地搭建一个网站服务（例如：Django）
+  - python manage.py runserver  (http://127.0.0.1:8000/)
