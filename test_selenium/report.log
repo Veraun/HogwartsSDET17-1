@@ -1,0 +1,2 @@
+Fri, 05 Feb 2021 12:30:12 __init__.py[line:28] INFO item.name : test_baidu
+Fri, 05 Feb 2021 12:30:12 __init__.py[line:29] INFO item._nodeid : test_first.py::TestHogwarts::test_baidu
