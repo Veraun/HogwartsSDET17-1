@@ -1,0 +1,2 @@
+Mon, 08 Feb 2021 11:29:32 __init__.py[line:28] INFO item.name : test_frame
+Mon, 08 Feb 2021 11:29:32 __init__.py[line:29] INFO item._nodeid : test_frame.py::TestFrame::test_frame

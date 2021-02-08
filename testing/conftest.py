@@ -70,13 +70,13 @@ def cmdoption(request):
 #         u1 = str.decode('gb2312')#以gb2312编码对字符串str进行解码，获得字符串类型对象u1
 #         u2 = str.decode('utf-8')#如果以utf-8的编码对str进行解码得到的结果，将无法还原原来的字符串内容
 #         '''
-#         item.name = item.name.encode("utf-8").decode("unicode-escape")
-#         item._nodeid = item.nodeid.encode("utf-8").decode("unicode-escape")
+#         item.name = item.name.encode("utf-8").decode("unicode_escape")
+#         item._nodeid = item.nodeid.encode("utf-8").decode("unicode_escape")
+#
+#         if "add" in item._nodeid:
+#             item.add_marker(pytest.mark.add)
 
-    #     if "add" in item._nodeid:
-    #         item.add_marker(pytest.mark.add)
-    #
-    # item.reverse()
+    # items.reverse()
 
 def get_datas(name, type='int'):
     with open("./datas/calcNew.yml", encoding='utf-8') as f:
@@ -109,3 +109,5 @@ def get_div_int_normal_datas_with_fixture(request):
 @pytest.fixture(params=get_datas('div', 'int_error')[0], ids=get_datas('div', 'int_error')[1])
 def get_div_int_error_datas_with_fixture(request):
     return request.param
+
+

@@ -1,0 +1,8 @@
+-
+  by:id
+  locator:name
+  action:click
+
+- 10
+- 20
+- 30

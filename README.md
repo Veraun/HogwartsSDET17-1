@@ -49,6 +49,10 @@ pytest：https://docs.pytest.org/en/stable/getting-started.html
   - python manage.py runserver  (http://127.0.0.1:8000/)
   
 
+************************************************
+************************************************
+
+
 ## 第二部分---selenium实战
 selenium实战联演
 

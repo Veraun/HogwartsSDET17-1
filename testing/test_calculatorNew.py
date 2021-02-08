@@ -13,7 +13,6 @@ from pythoncode.Calculator import Calculator
 
 
 
-
 #使用fixture
 @pytest.fixture(scope="session")
 def get_instance():
