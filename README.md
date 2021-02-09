@@ -57,4 +57,9 @@ pytest：https://docs.pytest.org/en/stable/getting-started.html
 selenium实战联演
 
 ## 项目框架结构
-- Testcases：主要测试用例文件夹 
+- selenium_demo：测试demo
+- selenium_event:各种事件
+- selenium_frame_window:多窗口、frame
+- selenium_file_alert:文件上传、alert弹窗
+- selenium_js:js操作
+ 
