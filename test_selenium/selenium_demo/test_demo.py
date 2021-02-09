@@ -5,6 +5,7 @@
 # @File    : test_demo.py
 # @Software: PyCharm
 '''
+http://npm.taobao.org/mirrors/chromedriver
 mac系统：
 1.一定要将chromedriver放在/usr/local/bin
 2.然后再vim ~/.bash_profile，export PATH=$PATH:/usr/local/bin
