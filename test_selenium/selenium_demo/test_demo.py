@@ -4,8 +4,12 @@
 # @Author  : Warren.wang
 # @File    : test_demo.py
 # @Software: PyCharm
+'''
+mac系统：
+1.一定要将chromedriver放在/usr/local/bin
+2.然后再vim ~/.bash_profile，export PATH=$PATH:/usr/local/bin
+'''
 
-import selenium
 from selenium import webdriver
 
 def test_selenium():

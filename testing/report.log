@@ -1,0 +1,6 @@
+Tue, 09 Feb 2021 10:53:16 __init__.py[line:28] INFO item.name : test_add_float[小数点后两位]
+Tue, 09 Feb 2021 10:53:16 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_add_float[小数点后两位]
+Tue, 09 Feb 2021 10:53:16 __init__.py[line:28] INFO item.name : test_add_float[小数点后三位]
+Tue, 09 Feb 2021 10:53:16 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_add_float[小数点后三位]
+Tue, 09 Feb 2021 10:53:16 __init__.py[line:28] INFO item.name : test_add_float[负数小数点]
+Tue, 09 Feb 2021 10:53:16 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_add_float[负数小数点]
