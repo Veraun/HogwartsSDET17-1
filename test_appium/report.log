@@ -1,0 +1,2 @@
+Thu, 18 Feb 2021 19:24:28 __init__.py[line:28] INFO item.name : test_search
+Thu, 18 Feb 2021 19:24:28 __init__.py[line:29] INFO item._nodeid : test_dingweipytest.py::TestDW::test_search

@@ -101,3 +101,12 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
 #### 显示等待(等待某个元素)
 - Element = WebDriverWait(driver,10,0.5).until(expected_conditions.visibility_of_element_located((MobileBy.ID,"com.android.settings:id/title")))
 - 在客户端等待
+
+### 定位方法
+#### 测试步骤三要素
+- 定位、交互、断言
+#### 测试步骤三要素
+- id定位
+- accessibility_id定位
+- xpath定位
+- classname定位(不推荐)
