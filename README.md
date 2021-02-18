@@ -35,7 +35,8 @@ pytest：https://docs.pytest.org/en/stable/getting-started.html
     - pip install dist/pytest_encode-1.0-py3-none-any.whl
   - 安装后，您可以使用日志和中文用例显示功能
 - requirement.txt：插件和依赖项，它们需要安装在您的虚拟环境中
-    - pip install -r requirement.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+    - 安装：pip install -r requirement.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+    - 导出：pip freeze > requirements.txt
 - pytest.ini：一些有用的命令行，包括addopts设置和诱人的报告生成，它们会在程序启动时自动激活
 
 ## 使用Allure报告
@@ -68,7 +69,13 @@ selenium实战联演
  
 ## 第三部分---appium实战
 
-###环境准备
+### 环境准备
+- jdk 1.8版本
+- Android sdk
+- Nodejs(>=10版本)、npm(>=6版本)
+- python3
+- appium-desktop
+- Appium python client
 - windows + 是夜神/木木这类模拟器 是需要手动adb connect一下
 - mac + 是夜神/木木这类模拟器 ,只需adb kill-server，然后再adb devices
 
@@ -76,15 +83,15 @@ selenium实战联演
 #### app信息
 - 获取当前界面元素:adb shell dumpsys activity top（推荐）（重点）
 - 获取任务列表:adb shell dumpsys activity activities
-####app入口
+#### app入口
 - 获取appPackage和appActivity：adb logcat | grep -i displayed （推荐）（重点）
 如：02-18 16:07:42.819   479   690 I ActivityManager: Displayed com.xueqiu.android/.view.WelcomeActivityAlias: +5s97ms
 - aapt dump badging mobike.apk | grep launchable-activity
 - apkanalyzer最新版本的sdk中才有
-####启动应用
+#### 启动应用
 adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重点）
 
-###三种经典等待方式
+### 三种经典等待方式
 #### 强制等待 
 - sleep 不推荐
 #### 隐式等待(全局性)
