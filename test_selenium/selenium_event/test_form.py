@@ -27,7 +27,11 @@ class TestForm():
         passwd = self.driver.find_element_by_id("user_password")
         passwd.send_keys("@*3614358wang")
         print(passwd.get_attribute("value"))
+        #报错
         # self.driver.find_element_by_id("user_remember_me").click()
-        # self.driver.find_element(By.XPATH,'//*[@id="user_remember_me"]').click()
+        #成功
+        ele = self.driver.find_element_by_xpath('//*[@id="user_remember_me"]')
+        webdriver.ActionChains(self.driver).move_to_element(ele).click(ele).perform()
+
         self.driver.find_element(By.XPATH,'//*[@id="new_user"]/div[4]/input').click()
 

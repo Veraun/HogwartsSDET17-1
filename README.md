@@ -62,4 +62,35 @@ selenium实战联演
 - selenium_frame_window:多窗口、frame
 - selenium_file_alert:文件上传、alert弹窗
 - selenium_js:js操作
+
+************************************************
+************************************************ 
  
+## 第三部分---appium实战
+
+###环境准备
+- windows + 是夜神/木木这类模拟器 是需要手动adb connect一下
+- mac + 是夜神/木木这类模拟器 ,只需adb kill-server，然后再adb devices
+
+### 常用命令
+#### app信息
+- 获取当前界面元素:adb shell dumpsys activity top（推荐）（重点）
+- 获取任务列表:adb shell dumpsys activity activities
+####app入口
+- 获取appPackage和appActivity：adb logcat | grep -i displayed （推荐）（重点）
+如：02-18 16:07:42.819   479   690 I ActivityManager: Displayed com.xueqiu.android/.view.WelcomeActivityAlias: +5s97ms
+- aapt dump badging mobike.apk | grep launchable-activity
+- apkanalyzer最新版本的sdk中才有
+####启动应用
+adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重点）
+
+###三种经典等待方式
+#### 强制等待 
+- sleep 不推荐
+#### 隐式等待(全局性)
+- 设置一个超时时间，服务端appium会在给定的时间内，不停地查找，默认值是0
+- 用法：driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
+- 在服务端等待
+#### 显示等待(等待某个元素)
+- Element = WebDriverWait(driver,10,0.5).until(expected_conditions.visibility_of_element_located((MobileBy.ID,"com.android.settings:id/title")))
+- 在客户端等待
