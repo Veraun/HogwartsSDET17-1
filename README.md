@@ -110,3 +110,8 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
 - accessibility_id定位
 - xpath定位
 - classname定位(不推荐)
+### 定位工具
+#### uiautomatorviewer工具(only android)
+- 推荐使用
+- sdk路径下的工具
+#### Appium inspector工具

@@ -29,9 +29,11 @@ class TestForm():
         print(passwd.get_attribute("value"))
         #报错
         # self.driver.find_element_by_id("user_remember_me").click()
-        #成功
+        #成功：方案一（使用鼠标事件来操作）
         ele = self.driver.find_element_by_xpath('//*[@id="user_remember_me"]')
         webdriver.ActionChains(self.driver).move_to_element(ele).click(ele).perform()
+        #成功：方案二(使用js或者直接定位到遮盖的伪元素上进行点击操作)
+        # self.driver.find_element(By.CSS_SELECTOR, 'custom-control-label').click()
 
         self.driver.find_element(By.XPATH,'//*[@id="new_user"]/div[4]/input').click()
 
