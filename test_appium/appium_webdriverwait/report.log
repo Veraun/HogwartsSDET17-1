@@ -1,0 +1,2 @@
+Sat, 20 Feb 2021 15:30:41 __init__.py[line:28] INFO item.name : test_toast
+Sat, 20 Feb 2021 15:30:41 __init__.py[line:29] INFO item._nodeid : test_toast.py::TestToast::test_toast

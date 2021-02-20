@@ -86,6 +86,7 @@ selenium实战联演
 #### app入口
 - 获取appPackage和appActivity：adb logcat | grep -i displayed （推荐）（重点）
 如：02-18 16:07:42.819   479   690 I ActivityManager: Displayed com.xueqiu.android/.view.WelcomeActivityAlias: +5s97ms
+- 在模拟器当前页面，获取appPackage和appActivity ： adb shell dumpsys window | grep mCurrent
 - aapt dump badging mobike.apk | grep launchable-activity
 - apkanalyzer最新版本的sdk中才有
 #### 启动应用
@@ -94,14 +95,18 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
 ### 三种经典等待方式
 #### 强制等待 
 - sleep 不推荐
-#### 隐式等待(全局性)
+#### 隐式等待
+- (全局性)生效
 - 设置一个超时时间，服务端appium会在给定的时间内，不停地查找，默认值是0
-- 用法：driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
+- 用法：driver.implicitly_wait(10, TimeUnit.SECONDS)
 - 在服务端等待
+- 默认尽量加上，限定在3-6秒，为了所有的find_element方法都有一个很好的缓冲
 #### 显示等待(等待某个元素)
+- (局部)生效
 - Element = WebDriverWait(driver,10,0.5).until(expected_conditions.visibility_of_element_located((MobileBy.ID,"com.android.settings:id/title")))
 - 在客户端等待
-
+- 用来处理隐式等待无法解决的一些问题。如：文件上传
+- 显示等待可以设置的长一点
 ### 定位方法
 #### 测试步骤三要素
 - 定位、交互、断言
@@ -115,3 +120,13 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
 - 推荐使用
 - sdk路径下的工具
 #### Appium inspector工具
+
+### 高阶定位方法
+- uiautomator
+  - self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/login_account")').send_keys("wiki")
+
+- 滚动查找指定元素
+  - self.driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().'
+                                                        'scrollable(true).instance(0)).'
+                                                        'scrollIntoView(new UiSelector().text("轻金融").'
+                                                        'instance(0));').click()

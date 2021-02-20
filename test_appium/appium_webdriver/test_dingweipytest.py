@@ -7,6 +7,8 @@
 @time: 2021/2/18 18:13
 @Email: wei1.wang@ximalaya.com
 '''
+import time
+
 import pytest
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
@@ -92,7 +94,7 @@ class TestDW():
         y_end = int(height* 1/5)
         action.press(x=x1, y=y_start).wait(300).move_to(x=x1, y=y_end).release().perform()
 
-
+    @pytest.mark.skip
     def test_xpath(self):
         '''
         元素定位高阶用法
@@ -100,9 +102,43 @@ class TestDW():
         '''
         self.driver.find_element_by_id("com.xueqiu.android:id/tv_search").click()
         self.driver.find_element_by_id("com.xueqiu.android:id/search_input_text").send_keys("阿里巴巴")
-        self.driver.find_element_by_xpath('//*[@resource-id="com.xueqiu.android:id/stockName" and @text="阿里巴巴"]').click()
+        # self.driver.find_element_by_xpath('//*[@resource-id="com.xueqiu.android:id/stockName" and @text="阿里巴巴"]').click()
+        self.driver.find_element_by_xpath('//*[@text="BABA"]').click()
         #获取股票价格
+        current_price = self.driver.find_element_by_xpath('//*[@text="09988"]/../../..//*[@resource-id="com.xueqiu.android:id/current_price"]').text
+        print(f"当前09988股票对应的股票价格是：{current_price}")
+        assert float(current_price) > 200
 
+    @pytest.mark.skip
+    def test_myinfo(self):
+        '''
+        使用：find_element_by_android_uiautomator定位
+        1.点击 我的，进入个人信息页面
+        2.点击登录，进入到登录页面
+        3.输入用户名和密码
+        4.点击登录
+        :return:
+        '''
+        self.driver.find_element_by_android_uiautomator('new UiSelector().text("我的")').click()
+        self.driver.find_element_by_android_uiautomator('new UiSelector().textContains("帐号密码")').click()
+        self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/login_account")').send_keys("wiki")
+        self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/login_password")').send_keys("wiki123")
+        self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/button_next")').click()
+        # self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/tab_name").text("我的")')
+        # self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/title_container").childSelect(text("股票"))')
+
+    @pytest.mark.skip
+    def test_scroll_find_element(self):
+        '''
+        在页面实现滚动查找指定元素，如：轻金融
+        :return:
+        '''
+        self.driver.find_element_by_android_uiautomator('new UiSelector().text("关注")').click()
+        self.driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().'
+                                                        'scrollable(true).instance(0)).'
+                                                        'scrollIntoView(new UiSelector().text("轻金融").'
+                                                        'instance(0));').click()
+        time.sleep(3)
 
 if __name__ == '__main__':
     pytest.main()
