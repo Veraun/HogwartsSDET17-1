@@ -156,3 +156,7 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
   
   
 ### 参数化用例
+`@pytest.mark.parametrize("search_key, type, expect_price",[
+        ('alibaba', 'BABA', 250),
+        ('xiaomi', '01810', 28)
+    ])`

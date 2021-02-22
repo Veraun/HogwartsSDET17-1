@@ -1,2 +1,4 @@
-Mon, 22 Feb 2021 12:44:26 __init__.py[line:28] INFO item.name : test_hamcrest
-Mon, 22 Feb 2021 12:44:26 __init__.py[line:29] INFO item._nodeid : test_assert.py::TestGetAssert::test_hamcrest
+Mon, 22 Feb 2021 19:12:04 __init__.py[line:28] INFO item.name : test_search[alibaba-BABA-250]
+Mon, 22 Feb 2021 19:12:04 __init__.py[line:29] INFO item._nodeid : test_param.py::TestParam::test_search[alibaba-BABA-250]
+Mon, 22 Feb 2021 19:12:04 __init__.py[line:28] INFO item.name : test_search[xiaomi-01810-28]
+Mon, 22 Feb 2021 19:12:04 __init__.py[line:29] INFO item._nodeid : test_param.py::TestParam::test_search[xiaomi-01810-28]

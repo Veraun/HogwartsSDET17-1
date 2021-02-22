@@ -28,11 +28,32 @@ class TestParam():
         desired_caps['skipServerInstallation'] = 'true'  # 跳过安装、权限设置等操作(提升app运行速度)
         desired_caps['unicodeKeyBoard'] = 'true'  # case里输入如果有中文，需要设置
         desired_caps['resetKeyBoard'] = 'true'  # case里输入如果有中文，需要设置
-        # self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
-        # self.driver.implicitly_wait(5)
+        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+        self.driver.implicitly_wait(5)
 
     def teardown(self):
-        pass
+        self.driver.find_element(MobileBy.ID, "com.xueqiu.android:id/action_close").click()
+        # self.driver.quit()
 
-    def test_search(self):
-        pass
+    @pytest.mark.parametrize("search_key, type, expect_price",[
+        ('alibaba', 'BABA', 250),
+        ('xiaomi', '01810', 28)
+    ])
+    def test_search(self, search_key, type, expect_price):
+        '''
+        1. 打开雪球 应用
+        2. 点击 搜索框
+        3. 输入 搜索词 'alibaba' or 'xiaomi'
+        4, 点击第一个搜索结果
+        5. 判断 股票价格
+        :return:
+        '''
+        self.driver.find_element(MobileBy.ID, "com.xueqiu.android:id/tv_search").click()
+        self.driver.find_element(MobileBy.ID, "com.xueqiu.android:id/search_input_text").send_keys(search_key)
+        # self.driver.find_element(MobileBy.XPATH, "//*[@text='BABA']").click()
+        self.driver.find_element(MobileBy.ID, "com.xueqiu.android:id/name").click()
+        price_element = self.driver.find_element(MobileBy.XPATH,f"//*[@text='{type}']/../../..//*[@resource-id='com.xueqiu.android:id/current_price']")
+        current_price = float(price_element.text)
+        # expect_price = 240
+        print(f"当前价格{current_price}")
+        assert_that(current_price, close_to(expect_price, expect_price*0.1))
