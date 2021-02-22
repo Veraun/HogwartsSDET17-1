@@ -153,3 +153,6 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
   - hamcrest框架是一个为了测试为目的，能组合成灵活表达式的匹配器类库。
   - 提供了大量被称为"匹配器"的方法。每个匹配器都设计用于执行特定的比较操作
   - 支持多种语言。如java、python等
+  
+  
+### 参数化用例
