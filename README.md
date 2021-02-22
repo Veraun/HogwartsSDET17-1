@@ -130,3 +130,26 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
                                                         'scrollable(true).instance(0)).'
                                                         'scrollIntoView(new UiSelector().text("轻金融").'
                                                         'instance(0));').click()
+
+### toast定位
+- appium使用uiautomator底层的机制来分析抓取toast，并且把toast放到控件树里，但本身并不属于控件
+- automatorName：uiautomator2
+- 必须使用xpath查找
+  - //*[@class='android.widget.Toast']
+  - //*[contains(@text, 'popup menu item Search')]
+  
+### 属性获取
+- print(search_ele.get_attribute("content-desc"))
+- print(search_ele.get_attribute("resource-id"))
+- print(search_ele.get_attribute("enabled"))
+- print(search_ele.get_attribute("clickable"))
+- print(search_ele.get_attribute("bounds"))
+
+### 断言
+- 普通断言
+  - assert
+- Hamcrest断言
+  - github地址：https://github.com/hamcrest/PyHamcrest
+  - hamcrest框架是一个为了测试为目的，能组合成灵活表达式的匹配器类库。
+  - 提供了大量被称为"匹配器"的方法。每个匹配器都设计用于执行特定的比较操作
+  - 支持多种语言。如java、python等

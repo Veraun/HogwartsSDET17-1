@@ -15,7 +15,7 @@ from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-
+from hamcrest import *
 
 class TestWebdriverWait():
     def setup(self):
@@ -54,5 +54,6 @@ class TestWebdriverWait():
         ele = WebDriverWait(self.driver, 10).until(lambda x:x.find_element(*locator))
         print(f"当前09988股票对应的股票价格是：{ele.text}")
         current_price = float(ele.text)
-        expect_price = 200
+        expect_price = 240
         assert current_price > expect_price
+        assert_that(current_price, close_to(expect_price, expect_price*0.1))
