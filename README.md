@@ -67,7 +67,7 @@ selenium实战联演
 ************************************************
 ************************************************ 
  
-## 第三部分---appium实战
+## 第三部分---appium实战：原生应用(Native App)
 
 ### 环境准备
 - jdk 1.8版本
@@ -160,3 +160,51 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
         ('alibaba', 'BABA', 250),
         ('xiaomi', '01810', 28)
     ])`
+
+
+************************************************
+************************************************ 
+ 
+## 第四部分---appium实战：网页端应用(webview App,浏览器可以打开的应用)
+### 环境准备
+- 手机端
+  - 被测浏览器：safari、Chrome、browser(不可以是第三方浏览器)
+  - 查看模拟器里安装的所有应用包：adb shell pm list package
+  - 查看模拟器里安装的浏览器应用包：adb shell pm list package | grep browser
+  - 查看模拟器里安装的浏览器应用版本号：adb shell pm dump com.android.browser | grep version
+  
+
+- PC端
+  - 下载对应手机浏览器的driver版本：
+    - https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/web/chromedriver.md
+    - https://chromedriver.storage.googleapis.com/index.html?path=2.20
+
+- 客户端代码
+  - ``
+des_caps = {
+            "platformName": "android",
+            "platformVersion": "6.0.1",
+            "browserName": "Browser",  # 被测浏览器
+            "deviceName": "emulator-5554",
+            "noReset": True,  # 去掉页面弹窗
+            "chromedriverExecutable": "/Users/xmly/Documents/chromedriver20"  #Chromedriver地址
+        }
+``
+
+- Chromedriver地址
+  - 将下载好的webdirver放在下面任一路径下
+  - 1默认地址：appium自动读取，
+    - /Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-chromedriver/chromedriver/mac
+  - 2可自定义路径
+    - /Users/xmly/Documents/chromedriver20
+
+
+
+
+
+
+
+************************************************
+************************************************ 
+ 
+## 第五部分---appium实战：混合应用(Hybrid App)
