@@ -1,0 +1,2 @@
+Tue, 23 Feb 2021 18:36:23 __init__.py[line:28] INFO item.name : test_webview
+Tue, 23 Feb 2021 18:36:23 __init__.py[line:29] INFO item._nodeid : test_webview_apidemo.py::TestBrowser::test_webview

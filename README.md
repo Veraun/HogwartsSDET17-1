@@ -198,8 +198,9 @@ des_caps = {
   - 2可自定义路径
     - /Users/xmly/Documents/chromedriver20
 
-
-
+### 元素定位
+- 1只能通过PC上的Chrome浏览器，输入：chrome://inspect/#devices
+- 2点击页面上的inspect，弹出页面，进行元素定位
 
 
 
@@ -208,3 +209,25 @@ des_caps = {
 ************************************************ 
  
 ## 第五部分---appium实战：混合应用(Hybrid App)
+
+### 如何判断app里有页面是webview
+- 1.断网查看
+- 2.看加载条
+- 3.看顶部是有有关闭按钮
+- 4.下拉刷新，页面是否刷新
+- 5.下拉刷新的时候，是否有网页提供方
+- 6.用工具查看：里面有webview的字眼
+
+### 前提条件
+- PC：
+  - 1.浏览器能访问https://www.google.com
+  - 2.下载对应手机浏览器的driver版本：                                                           
+    - https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/
+    - https://chromedriver.storage.googleapis.com/index.html?path=2.20            
+
+- 手机端：
+  - 应用代码需要打开webview开关
+
+- 代码：
+  - appPackage，appActivity
+  - desirecapability里添加：chromedriverExecutable ：driver路径
