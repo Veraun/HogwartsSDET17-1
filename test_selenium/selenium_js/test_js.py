@@ -35,6 +35,7 @@ class TestJs(Base):
     def test_datetime(self):
         self.driver.get("https://www.12306.cn/index/")
         date_js = self.driver.execute_script("a=document.getElementById('train_date');a.removeAttribute('readonly')")
+        time.sleep(1)
         self.driver.execute_script("document.getElementById('train_date').value='2021-06-20'")
         time.sleep(3)
         print(self.driver.execute_script("return document.getElementById('train_date').value"))

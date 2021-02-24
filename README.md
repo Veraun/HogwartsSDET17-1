@@ -101,6 +101,7 @@ adb shell am start -W -n com.xueqiu.android/.view.WelcomeActivityAlias -S （重
 - 用法：driver.implicitly_wait(10, TimeUnit.SECONDS)
 - 在服务端等待
 - 默认尽量加上，限定在3-6秒，为了所有的find_element方法都有一个很好的缓冲
+- 只有查找页面元素，才会触发隐式等待
 #### 显示等待(等待某个元素)
 - (局部)生效
 - Element = WebDriverWait(driver,10,0.5).until(expected_conditions.visibility_of_element_located((MobileBy.ID,"com.android.settings:id/title")))
@@ -199,8 +200,12 @@ des_caps = {
     - /Users/xmly/Documents/chromedriver20
 
 ### 元素定位
-- 1只能通过PC上的Chrome浏览器，输入：chrome://inspect/#devices
-- 2点击页面上的inspect，弹出页面，进行元素定位
+- 方式一：
+    - 1只能通过PC上的Chrome浏览器，输入：chrome://inspect/#devices
+    - 2点击页面上的inspect，弹出页面，进行元素定位
+- 方式二：
+    - 下载UC浏览器开发者版本
+        - http://192.168.60.25:7788/panda/index#/taskDependent
 
 
 
@@ -231,3 +236,8 @@ des_caps = {
 - 代码：
   - appPackage，appActivity
   - desirecapability里添加：chromedriverExecutable ：driver路径
+
+- 模拟器安装：支持android6.0
+    - 安装文档：https://blog.csdn.net/zww1984774346/article/details/51888218
+    - 软件名：Genymotion 登录名：wangwei806881231@163.com  https://www.genymotion.com/download/
+    - 软件名：VirtualBox  https://www.virtualbox.org/wiki/Downloads
