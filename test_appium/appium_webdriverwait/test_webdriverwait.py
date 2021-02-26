@@ -27,7 +27,7 @@ class TestWebdriverWait():
         desired_caps['appActivity'] = 'com.xueqiu.android.common.MainActivity'
         desired_caps['noReset'] = 'true'  # 去掉页面弹窗
         # desired_caps['dontStopAppOnReset'] = 'true'  # 启动时不停止app(提升app运行速度)
-        desired_caps['skipDeviceInitialization'] = 'true'  # 跳过安装、权限设置等操作(提升app运行速度)
+        desired_caps['skipServerInstallation'] = 'true'  # 跳过安装、权限设置等操作(提升app运行速度)
         desired_caps['unicodeKeyBoard'] = 'true'  # case里输入如果有中文，需要设置
         desired_caps['resetKeyBoard'] = 'true'  # case里输入如果有中文，需要设置
         self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)

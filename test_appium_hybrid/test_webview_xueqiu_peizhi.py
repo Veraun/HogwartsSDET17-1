@@ -25,7 +25,9 @@ class TestBrowser():
             "deviceName": "192.168.56.102:5555",
             "noReset": True,  # 去掉页面弹窗，提升云效速度
             "skipServerInstallation" : 'true',  # 跳过安装、权限设置等操作(提升app运行速度)
-            "chromedriverExecutable": "/Users/xmly/Documents/chromedriver74"
+            # "chromedriverExecutable": "/Users/xmly/Documents/chromedriver74"
+            "chromedriverExecutableDir": "/Users/xmly/Documents/mychromedriver/all",
+            # "chromedriverChromeMappingFile": "/Users/xmly/Documents/workspace/HogwartsSDET17/test_appium_hybrid/mapping.json"
         }
         self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", des_caps)
         self.driver.implicitly_wait(10)
@@ -52,11 +54,11 @@ class TestBrowser():
 
         # 输入用户名和验证码，点击立即开户
         # 增加显示等待
-        phonenumber_locator = (MobileBy.ID, "phone-number")
-        WebDriverWait(self.driver, 60).until(expected_conditions.element_to_be_clickable(phonenumber_locator))
-        self.driver.find_element(*phonenumber_locator).send_keys("13524631949")
-        self.driver.find_element(MobileBy.ID, "code").send_keys("123456")
-        self.driver.find_element(MobileBy.CSS_SELECTOR, "body > div > div > div.form-wrap > div > div.btn-submit").click()
+        # phonenumber_locator = (MobileBy.ID, "phone-number")
+        # WebDriverWait(self.driver, 60).until(expected_conditions.element_to_be_clickable(phonenumber_locator))
+        # self.driver.find_element(*phonenumber_locator).send_keys("13524631949")
+        # self.driver.find_element(MobileBy.ID, "code").send_keys("123456")
+        # self.driver.find_element(MobileBy.CSS_SELECTOR, "body > div > div > div.form-wrap > div > div.btn-submit").click()
 
 
 

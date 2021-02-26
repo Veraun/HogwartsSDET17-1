@@ -200,11 +200,17 @@ des_caps = {
     - /Users/xmly/Documents/chromedriver20
 
 ### 元素定位
+#### 前提条件
+  - 1.浏览器能访问https://www.google.com
+  - 2.下载对应手机浏览器的driver版本：                                                           
+    - https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/
+    - https://chromedriver.storage.googleapis.com/index.html?path=2.20 
 - 方式一：
     - 1只能通过PC上的Chrome浏览器，输入：chrome://inspect/#devices
     - 2点击页面上的inspect，弹出页面，进行元素定位
 - 方式二：
     - 下载UC浏览器开发者版本
+        - webview调试工具(无需科学上网)
         - http://192.168.60.25:7788/panda/index#/taskDependent
 
 
@@ -241,3 +247,16 @@ des_caps = {
     - 安装文档：https://blog.csdn.net/zww1984774346/article/details/51888218
     - 软件名：Genymotion 登录名：wangwei806881231@163.com  https://www.genymotion.com/download/
     - 软件名：VirtualBox  https://www.virtualbox.org/wiki/Downloads
+
+### appium实战遇到的坑
+- 设备
+    - android模拟器6.0默认支持webview操作
+    - Genymotion和sdk自带的emulator可以
+    - 其他物理机和其他模拟器(如：mumu模拟器)不可以，需要开发人员打开app内开关(webview调试开关)
+- PC浏览器定位元素
+    - chrome浏览器-Chrome62才可以更好的看见webview内部，其他版本可能有bug
+    - 也可换成chromium浏览器可以避免很多坑，展示效果和速度比chrome要快
+- 代码
+    - 有的设备可以直接使用find_element_by_accessibility_id(),不同设备渲染的页面不同，兼容性不适合
+    - 使用switch_to.context()
+    - 使用switch_to.window()
