@@ -64,6 +64,20 @@ selenium实战联演
 - selenium_file_alert:文件上传、alert弹窗
 - selenium_js:js操作
 
+## 复用已有浏览器
+- 参考帖子
+    - https://ceshiren.com/t/topic/3567
+- 浏览器
+    - chrome -remote -debugging -port = 9222
+- python
+    - chrome_arg = webdriver.ChromeOptions()
+    - chrome_arg.debugger_address = '127.0.0.1:9222'
+    - self.driver = webdriver.Chrome()
+- 环境设置及启动命令
+    - Windows/Linux命令为：chrome --remote-debugging-port=9222 (9222为端口号，可以换成任意一个没有被占用的端口)
+    - Mac命令为：Google\ Chrome --remote-debugging-port=9222 (9222为端口号，可以换成任意一个没有被占用的端口) (注意命令中间的反斜线)
+
+
 ************************************************
 ************************************************ 
  
