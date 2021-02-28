@@ -9,6 +9,7 @@
 '''
 import json
 
+import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from time import sleep
@@ -28,7 +29,8 @@ class TestTmp():
     def teardown_method(self, method):
         self.driver.quit()
 
-    def test_main_tmp(self):
+    @pytest.mark.skip
+    def test_regester(self):
         '''
         基于首页登录
         :return:
@@ -39,7 +41,8 @@ class TestTmp():
         self.driver.find_element(By.XPATH, "//*[@id='corp_name']").send_keys("xxx")
         sleep(5)
 
-    def test_login_tmp(self):
+    @pytest.mark.skip
+    def test_login_with_debug(self):
         '''
         基于浏览器复用后后的内容进行操作
         :return:
@@ -47,7 +50,7 @@ class TestTmp():
         self.driver.get("https://work.weixin.qq.com/wework_admin/frame")
         self.driver.find_element(By.XPATH, "//*[@id='menu_contacts']").click()
 
-    def test_cookie_login(self):
+    def test_login_with_cookie(self):
         '''
         利用cookie进行登录
         :return:
