@@ -19,7 +19,9 @@ class TestTmp():
     复用已有浏览器
     '''
     def setup_method(self, method):
+        # 声明 chrome的参数
         chrome_arg = webdriver.ChromeOptions()
+        # 加入调试地址
         chrome_arg.debugger_address = '127.0.0.1:9222'
         self.driver = webdriver.Chrome(options=chrome_arg)
         self.driver = webdriver.Chrome()
