@@ -1,0 +1,2 @@
+Mon, 01 Mar 2021 17:23:44 __init__.py[line:28] INFO item.name : test_add_member
+Mon, 01 Mar 2021 17:23:44 __init__.py[line:29] INFO item._nodeid : test_address.py::TestAddress::test_add_member

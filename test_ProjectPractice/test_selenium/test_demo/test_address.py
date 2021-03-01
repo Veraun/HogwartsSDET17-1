@@ -61,7 +61,7 @@ class TestTmp():
         # 输入姓名
         self.driver.find_element(By.XPATH, "//*[@id='username']").send_keys("测试3")
         # 输入账号
-        self.driver.find_element(By.XPATH, "//*[@id='memberAdd_acctid']").send_keys("test03")
+        self.drivPer.find_element(By.XPATH, "//*[@id='memberAdd_acctid']").send_keys("test03")
         # 输入手机号
         self.driver.find_element(By.XPATH, "//*[@id='memberAdd_phone']").send_keys("13524630003")
         # 点击保存
