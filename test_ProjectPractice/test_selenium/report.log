@@ -1,2 +1,2 @@
-Sun, 28 Feb 2021 13:56:12 __init__.py[line:28] INFO item.name : test_cookie_login
-Sun, 28 Feb 2021 13:56:12 __init__.py[line:29] INFO item._nodeid : test_selenium_practice.py::TestTmp::test_cookie_login
+Mon, 01 Mar 2021 15:18:05 __init__.py[line:28] INFO item.name : test_login_with_debug
+Mon, 01 Mar 2021 15:18:05 __init__.py[line:29] INFO item._nodeid : test_address.py::TestTmp::test_login_with_debug

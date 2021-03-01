@@ -24,9 +24,8 @@ class TestTmp():
         # 加入调试地址
         chrome_arg.debugger_address = '127.0.0.1:9222'
         self.driver = webdriver.Chrome(options=chrome_arg)
-        self.driver = webdriver.Chrome()
-        self.vars = {}
         # self.driver = webdriver.Chrome()
+        self.vars = {}
 
     def teardown_method(self, method):
         self.driver.quit()
@@ -43,7 +42,7 @@ class TestTmp():
         self.driver.find_element(By.XPATH, "//*[@id='corp_name']").send_keys("xxx")
         sleep(5)
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_login_with_debug(self):
         '''
         基于浏览器复用后后的内容进行操作
