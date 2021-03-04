@@ -1,0 +1,2 @@
+Wed, 03 Mar 2021 09:11:31 __init__.py[line:28] INFO item.name : test_tmp
+Wed, 03 Mar 2021 09:11:31 __init__.py[line:29] INFO item._nodeid : test_debug.py::TestTmp::test_tmp

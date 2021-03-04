@@ -1,2 +1,2 @@
-Thu, 25 Feb 2021 10:14:21 __init__.py[line:28] INFO item.name : test_browser
-Thu, 25 Feb 2021 10:14:21 __init__.py[line:29] INFO item._nodeid : test_browser.py::TestBrowser::test_browser
+Mon, 01 Mar 2021 19:35:08 __init__.py[line:28] INFO item.name : test_browser
+Mon, 01 Mar 2021 19:35:08 __init__.py[line:29] INFO item._nodeid : test_browser.py::TestBrowser::test_browser

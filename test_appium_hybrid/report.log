@@ -1,2 +1,2 @@
-Fri, 26 Feb 2021 09:48:25 __init__.py[line:28] INFO item.name : test_webview
-Fri, 26 Feb 2021 09:48:25 __init__.py[line:29] INFO item._nodeid : test_webview_xueqiu_peizhi.py::TestBrowser::test_webview
+Wed, 03 Mar 2021 19:50:18 __init__.py[line:28] INFO item.name : test_webview
+Wed, 03 Mar 2021 19:50:18 __init__.py[line:29] INFO item._nodeid : test_honor_weixin.py::TestBrowser::test_webview

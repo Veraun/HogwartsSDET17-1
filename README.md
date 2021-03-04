@@ -98,8 +98,11 @@ selenium实战联演
 - 获取当前界面元素:adb shell dumpsys activity top（推荐）（重点）
 - 获取任务列表:adb shell dumpsys activity activities
 #### app入口
-- 获取appPackage和appActivity：adb logcat | grep -i displayed （推荐）（重点）
-如：02-18 16:07:42.819   479   690 I ActivityManager: Displayed com.xueqiu.android/.view.WelcomeActivityAlias: +5s97ms
+- 获取appPackage和appActivity：
+    - adb logcat | grep -i displayed （推荐）（重点）
+    - Mac/Linux：adb logcat |grep -i activitymanager
+    - Windows：adb logcat |findstr /i activitymanager
+    - 如：02-18 16:07:42.819   479   690 I ActivityManager: Displayed com.xueqiu.android/.view.WelcomeActivityAlias: +5s97ms
 - 在模拟器当前页面，获取appPackage和appActivity ： adb shell dumpsys window | grep mCurrent
 - aapt dump badging mobike.apk | grep launchable-activity
 - apkanalyzer最新版本的sdk中才有
