@@ -86,3 +86,4 @@ class TestSign():
         # 激活隐式等待
         self.driver.find_element(MobileBy.XPATH, "//*[@text='外出打卡成功']")
 
+
