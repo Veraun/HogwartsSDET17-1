@@ -1,2 +1,2 @@
-Fri, 05 Mar 2021 11:04:03 __init__.py[line:28] INFO item.name : test_webview
-Fri, 05 Mar 2021 11:04:03 __init__.py[line:29] INFO item._nodeid : test_qiyeweixin.py::TestDW::test_webview
+Fri, 05 Mar 2021 15:39:55 __init__.py[line:28] INFO item.name : test_sign
+Fri, 05 Mar 2021 15:39:55 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_sign
