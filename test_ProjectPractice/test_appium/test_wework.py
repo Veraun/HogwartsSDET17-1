@@ -49,8 +49,9 @@ class TestSign():
             "skipDeviceInitialization": 'true',
             "settings[waitForIdleTimeout]": 1, # settings 控制 动态页面的等待时长
             'automationName': 'UiAutomator1',
+            'unicodeKeyboard': True,  # 使用unicode编码方式发送字符串
+            'resetKeyboard': True  # 将键盘隐藏起来
         }
-
         # 客户端与appium服务器建立连接的代码
         self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", des_caps)
         self.driver.implicitly_wait(10)
@@ -58,6 +59,7 @@ class TestSign():
     def teardown(self):
         self.driver.quit()
 
+    @pytest.mark.skip
     def test_sign(self):
         '''
         前提条件：已登录
@@ -87,3 +89,25 @@ class TestSign():
         self.driver.find_element(MobileBy.XPATH, "//*[@text='外出打卡成功']")
 
 
+    def test_address(self):
+        '''
+        前提条件：已登录
+        打卡用例：
+        1、打开【企业微信】应用
+        2、进入【通讯录】
+        3、滑动页面查询【添加成员】并点击
+        4、点击【手动输入添加】
+        5、输入【姓名】、【手机号】，点击【保存】
+        6、退出【企业微信】应用
+        :return:
+        '''
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='通讯录']").click()
+        # 滑动查找  目前是向下滑动两次，再向上查找，知道找到元素
+        self.driver.find_element(MobileBy.ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector().'
+                                                        'scrollable(true).instance(0)).'
+                                                        'scrollIntoView(new UiSelector().text("添加成员").'
+                                                        'instance(0));').click()
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='手动输入添加']").click()
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='必填']").send_keys("测试07")
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='手机号']").send_keys("13524631107")
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='保存']").click()

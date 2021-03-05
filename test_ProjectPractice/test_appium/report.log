@@ -1,2 +1,4 @@
-Fri, 05 Mar 2021 15:39:55 __init__.py[line:28] INFO item.name : test_sign
-Fri, 05 Mar 2021 15:39:55 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_sign
+Fri, 05 Mar 2021 17:12:58 __init__.py[line:28] INFO item.name : test_sign
+Fri, 05 Mar 2021 17:12:58 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_sign
+Fri, 05 Mar 2021 17:12:58 __init__.py[line:28] INFO item.name : test_address
+Fri, 05 Mar 2021 17:12:58 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_address
