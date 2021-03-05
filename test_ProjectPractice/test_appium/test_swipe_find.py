@@ -43,3 +43,19 @@ def swipe_find(driver, element, location):
         if driver.page_source == page:
             print("已经滑动到最后页面，没有找到对应的频道信息!")
             return False
+
+
+def swipe_up_search_element(driver,ele):
+    #向上滑动后，寻找到一个元素后实现自动点击
+    size = driver.get_window_size()
+    x1 = size['width'] * 0.5
+    y1 = size['height'] * 0.25
+    y2 = size['height'] * 0.75
+    i = 0
+    while i < 20 :
+        try:
+            driver.find_element(*ele).click()  # 点击对应的元素信息
+            break
+        except Exception as e:
+            driver.swipe(x1,y2,x1,y1)
+            i = i+1

@@ -15,7 +15,7 @@ import pytest
 from appium import webdriver   # pip install appium-python-client
 from appium.webdriver.common.mobileby import MobileBy
 from appium.webdriver.common.touch_action import TouchAction
-
+from test_ProjectPractice.test_appium.test_swipe_find import *
 
 class TestSign():
     def setup(self):
@@ -106,10 +106,15 @@ class TestSign():
         '''
         self.driver.find_element(MobileBy.XPATH, "//*[@text='通讯录']").click()
         # 滑动查找  目前是向下滑动两次，再向上查找，知道找到元素
-        self.driver.find_element(MobileBy.ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector().'
-                                                        'scrollable(true).instance(0)).'
-                                                        'scrollIntoView(new UiSelector().text("添加成员").'
-                                                        'instance(0));').click()
+        # 方案一
+        # self.driver.find_element(MobileBy.ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector().'
+        #                                                 'scrollable(true).instance(0)).'
+        #                                                 'scrollIntoView(new UiSelector().text("添加成员").'
+        #                                                 'instance(0));').click()
+        # 方案二
+        Add_locator = (MobileBy.XPATH, "//*[@text='添加成员']")
+        swipe_up_search_element(self.driver, Add_locator)
+
         self.driver.find_element(MobileBy.XPATH, "//*[@text='手动输入添加']").click()
         self.driver.find_element(MobileBy.XPATH, "//*[@text='必填']").send_keys(username)
         self.driver.find_element(MobileBy.XPATH, "//*[@text='手机号']").send_keys(mobilephone)
