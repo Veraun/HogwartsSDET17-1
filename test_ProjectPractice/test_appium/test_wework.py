@@ -88,8 +88,11 @@ class TestSign():
         # 激活隐式等待
         self.driver.find_element(MobileBy.XPATH, "//*[@text='外出打卡成功']")
 
-
-    def test_address(self):
+    @pytest.mark.parametrize("username, mobilephone", [
+        ('测试08', '13524631108'),
+        ('测试09', '13524631109')
+    ])
+    def test_address(self, username, mobilephone):
         '''
         前提条件：已登录
         打卡用例：
@@ -108,6 +111,6 @@ class TestSign():
                                                         'scrollIntoView(new UiSelector().text("添加成员").'
                                                         'instance(0));').click()
         self.driver.find_element(MobileBy.XPATH, "//*[@text='手动输入添加']").click()
-        self.driver.find_element(MobileBy.XPATH, "//*[@text='必填']").send_keys("测试07")
-        self.driver.find_element(MobileBy.XPATH, "//*[@text='手机号']").send_keys("13524631107")
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='必填']").send_keys(username)
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='手机号']").send_keys(mobilephone)
         self.driver.find_element(MobileBy.XPATH, "//*[@text='保存']").click()
