@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_firstappium.py
 @time: 2021/2/18 11:00
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 
 from appium import webdriver

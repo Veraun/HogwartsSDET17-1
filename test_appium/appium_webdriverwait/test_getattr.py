@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_getattr.py
 @time: 2021/2/22 09:52
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 
 import pytest

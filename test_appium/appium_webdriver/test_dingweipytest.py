@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_dingweipytest.py
 @time: 2021/2/18 18:13
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 import time
 

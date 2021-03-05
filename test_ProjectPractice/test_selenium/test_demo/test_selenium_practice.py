@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_selenium_practice.py
 @time: 2021/2/26 10:43
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 import json
 

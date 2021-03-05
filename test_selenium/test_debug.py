@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_debug.py
 @time: 2021/3/3 09:11
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 
 from selenium import webdriver

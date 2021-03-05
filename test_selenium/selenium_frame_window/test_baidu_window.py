@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_baidu_window.py
 @time: 2021/2/24 14:54
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions

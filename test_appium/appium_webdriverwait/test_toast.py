@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_toast.py
 @time: 2021/2/20 15:23
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 
 from appium import webdriver

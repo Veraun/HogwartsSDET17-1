@@ -277,3 +277,136 @@ des_caps = {
     - 有的设备可以直接使用find_element_by_accessibility_id(),不同设备渲染的页面不同，兼容性不适合
     - 使用switch_to.context()
     - 使用switch_to.window()
+    
+    
+************************************************
+************************************************ 
+    
+## 第六部分---实战项目
+
+### appium-企业微信app项目实战
+
+标题
+app 企业微信实战（一）
+
+课程价值
+了解 Appium 框架结构
+掌握 Appium 环境搭建
+掌握 Appium Inspector 录制及查找元素的使用
+掌握 DesireCapability 用法
+
+大纲
+Appium 介绍
+Appium 环境搭建
+Appium Inspector
+企业微信实战-自动打卡
+
+
+PPT
+课堂 ppt https://pdf.ceshiren.com/ck17/appium1 PPT地址
+参考链接
+SDK安装：Android Studio安装(推荐使用这种方法安装SDK) 6
+appium 官网： appium.io 1
+appium 环境搭建：
+
+Android 环境配置：Appium 环境搭建（ windows 版本 | Mac版本） 5
+iOS 环境配置：IOS自动化配置 2
+mumu 模拟器：https://mumu.163.com/help/
+
+脚本编写
+应用
+Appium 框架结构
+
+appium 工作引擎
+
+- 如何选择一款合适的测试设备
+    - 真机
+        - 打开 开发者选项(设置-关于-找到【版本号】连点七下-返回上一层 - 打开usb调试模式)
+        - 安装手机驱动（ 手机助手 或者 豌豆夹…）
+        - 执行adb devices
+    - 模拟器
+        - mumu模拟器，夜神，逍遥，genimotion，emulator
+
+- mumu 模拟器的连接方式
+    - 【win版】
+        - adb connect 127.0.0.1:7555
+        - adb shell
+
+    - 【mac版】
+
+        - adb kill-server && adb server && adb shell
+`
+
+
+安装应用
+将下载好的apk拖到手机里
+使用 adb install 命令安装
+adb install -r  /path/to/com.tencent.wework_3.1.2_14198.apk 
+
+
+android 日志
+adb logcat '*:E' 收集Error 及Error 以上级别 的日志 
+
+mac/Linux： adb logcat ActivityManager:I | grep "cmp"
+Windows:adb logcat ActivityManager:I | findstr "cmp"
+企业微信企业页名：com.tencent.wework/.launch.LaunchSplashActivity（包名/启动页名）
+
+验证是否能够启动成功
+adb shell am start -n com.tencent.wework/.launch.LaunchSplashActivity
+
+DesireCapability
+settings 控制 动态页面的等待时长
+
+参考代码
+class TestDemo:
+    def setup(self):
+        caps = {}
+        caps["platformName"] = "android"
+        caps["deviceName"] = "emulator-5554"
+        caps["appPackage"] = "com.tencent.wework"
+        caps["appActivity"] = ".launch.LaunchSplashActivity"
+        caps["noReset"] = "true"
+        caps['settings[waitForIdleTimeout]'] = 1
+        # 客户端与appium 服务器建立连接的代码
+        self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", caps)
+        self.driver.implicitly_wait(5)
+
+    def teardown(self):
+        self.driver.quit()
+
+    def test_daka(self):
+        '''
+        前提条件: 已登录状态（ noReset=True）
+        打卡用例：
+        1、打开【企业微信】应用
+        2、进入【工作台】
+        3、点击【打卡】
+        4、选择【外出打卡】tab
+        5、点击【第N次打卡】
+        6、验证【外出打卡成功】
+        7、退出【企业微信】应用
+        :return:
+        '''
+        self.driver.find_element(MobileBy.XPATH, "//android.view.ViewGroup//*[@text='工作台']").click()
+        # android_uiautomator 里面要用双引号，外面用单引号。
+        # 向下滑动两次，再向上查找，直到找到元素
+        self.driver.find_element(MobileBy.ANDROID_UIAUTOMATOR,
+                                 'new UiScrollable(new UiSelector()'
+                                 '.scrollable(true).instance(0))'
+                                 '.scrollIntoView(new UiSelector()'
+                                 '.text("打卡").instance(0));').click()
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='外出打卡']").click()
+        self.driver.find_element(MobileBy.XPATH, '//*[contains(@text, "次外出")]').click()
+        print(self.driver.page_source)
+        # sleep(2)
+        # assert "外出打卡成功" in self.driver.page_source
+        # 激活隐式等待
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='外出打卡成功']")
+
+
+作业
+思考题：
+
+1如何封装滑动查找？（swipe TouchAction）
+
+2完成企业添加联系人

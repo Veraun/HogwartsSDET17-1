@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_register.py
 @time: 2021/3/1 16:53
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 from time import sleep
 

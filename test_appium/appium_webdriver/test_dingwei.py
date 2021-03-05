@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_dingwei.py
 @time: 2021/2/18 17:15
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy

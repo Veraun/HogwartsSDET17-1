@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_appiumide.py
 @time: 2021/2/18 16:43
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 from appium import webdriver
 desired_caps = {

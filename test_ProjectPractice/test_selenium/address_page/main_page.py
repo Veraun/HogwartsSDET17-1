@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: main_page.py
 @time: 2021/3/1 17:09
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 from selenium import webdriver
 from selenium.webdriver.common.by import By

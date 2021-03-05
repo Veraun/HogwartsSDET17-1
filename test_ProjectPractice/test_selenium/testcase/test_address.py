@@ -5,7 +5,7 @@
 @project: HogwartsSDET17
 @file: test_address.py
 @time: 2021/3/1 17:17
-@Email: wei1.wang@ximalaya.com
+@Email: Warron.wang
 '''
 from test_ProjectPractice.test_selenium.address_page.main_page import MainPage
 
