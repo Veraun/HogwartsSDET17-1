@@ -454,7 +454,7 @@ class TestDemo:
 
 - 应用
  - 参考链接
-   - flutter ： https://github.com/truongsinh/appium-flutter-driver 3
+   - flutter ： https://github.com/truongsinh/appium-flutter-driver 
 
 - DesireCapability 设置
     - appium:skipServerInstallation 跳过UIautomator2 server安装
@@ -473,9 +473,9 @@ class TestDemo:
 XPATH 定位方式
 * 全称：XML PATH
 
-xpath 官网：https://www.w3.org/TR/2017/REC-xpath-31-20170321/ 1
+xpath 官网：https://www.w3.org/TR/2017/REC-xpath-31-20170321/ 
 
-xpath function 的用法：https://www.w3.org/TR/xpath-functions/#func-starts-with 2
+xpath function 的用法：https://www.w3.org/TR/xpath-functions/#func-starts-with 
 
 绝对定位: 不推荐
 相对定位：
@@ -490,7 +490,7 @@ xpath function 的用法：https://www.w3.org/TR/xpath-functions/#func-starts-wi
 
 原生定位器
 * 官网
-https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html 1
+https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html 
 Uiautomator 定位
 * 写法：’new UiSelector().text(“text")’
 * 滚动查找：
