@@ -278,7 +278,31 @@ des_caps = {
     - 使用switch_to.context()
     - 使用switch_to.window()
     
-    
+### appium的capability使用进阶
+ - 参考文档：http://appium.io/docs/en/writing-running-appium/caps/#android-only
+ - 普通：
+     - newCommandTimeout: 找下一个元素的等待时间
+     - udid: 满足多设备时的唯一标识
+     - autoGrantPermissions: 授予各类弹框权限，自动把弹框点掉
+        - 当noReset=True时，此项不生效
+ - 测试策略：
+     - noReset ：不停止应用程序，不清除应用程序数据，也不卸载APK
+     - fullReset：停止应用程序，清除应用程序数据，卸载APK
+     - dontStopAppOnReset：不会kill应用，会继续执行后续用例
+ - 性能相关：启动时设置
+     - skipServerInstallation：跳过安装uiautomator2server等 服务
+     - skipDeviceInitialization：跳过设备的初始化
+     - skipUnlock
+     - skipLogcatCapture
+     - systemPort
+     - ignoreUnimportantViews
+     - relaxed-security
+     
+
+### 微信小程序测试
+ 
+ 
+ 
 ************************************************
 ************************************************ 
     
@@ -410,3 +434,10 @@ class TestDemo:
 1如何封装滑动查找？（swipe TouchAction）
 
 2完成企业添加联系人
+
+
+ 
+************************************************
+************************************************ 
+
+## 第七部分---ui自动化测试框架

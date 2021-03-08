@@ -1,4 +1,4 @@
-Fri, 05 Mar 2021 21:04:50 __init__.py[line:28] INFO item.name : test_address[测试08-13524631108]
-Fri, 05 Mar 2021 21:04:50 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_address[测试08-13524631108]
-Fri, 05 Mar 2021 21:04:50 __init__.py[line:28] INFO item.name : test_address[测试09-13524631109]
-Fri, 05 Mar 2021 21:04:50 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_address[测试09-13524631109]
+Mon, 08 Mar 2021 12:56:22 __init__.py[line:28] INFO item.name : test_addcontact[测试10-13524631110]
+Mon, 08 Mar 2021 12:56:22 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_addcontact[测试10-13524631110]
+Mon, 08 Mar 2021 12:56:22 __init__.py[line:28] INFO item.name : test_addcontact[测试11-13524631111]
+Mon, 08 Mar 2021 12:56:22 __init__.py[line:29] INFO item._nodeid : test_wework.py::TestSign::test_addcontact[测试11-13524631111]
