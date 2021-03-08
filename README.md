@@ -308,7 +308,7 @@ des_caps = {
     
 ## 第六部分---实战项目
 
-### appium-企业微信app项目实战
+### appium-企业微信app项目实战1
 
 标题
 app 企业微信实战（一）
@@ -432,9 +432,183 @@ class TestDemo:
 思考题：
 
 1如何封装滑动查找？（swipe TouchAction）
-
+    - https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_appium/test_wework.py
 2完成企业添加联系人
+    - https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_appium/test_swipe_find.py
 
+
+### appium-企业微信app项目实战2
+
+- 课程价值
+    - 掌握 元素定位几种方式
+    - 掌握 元素定位技巧
+    - 掌握 PO 设计模式
+- 大纲
+    - 元素定位的几种常用方式
+    - 元素定位技巧
+    - 特殊控件Toast获取
+    - 引入 PageObject 设计模式
+
+- PPT
+ - 课堂ppt https://pdf.ceshiren.com/ck17/appium2 PPT地址
+
+- 应用
+ - 参考链接
+   - flutter ： https://github.com/truongsinh/appium-flutter-driver 3
+
+- DesireCapability 设置
+    - appium:skipServerInstallation 跳过UIautomator2 server安装
+    - skipDeviceInitialization  跳过设备的初始化
+    - dontStopAppOnReset   测试之前不停止app运行
+
+测试步骤三要素
+* 定位、交互、断言
+
+定位方式
+* **Id** **定位（优先级最高）**
+* **XPath** **定位（速度慢，定位灵活）**
+* **Accessibility ID** **定位（****content-desc****）**
+* Uiautomator 定位（速度快，语法复杂）
+
+XPATH 定位方式
+* 全称：XML PATH
+
+xpath 官网：https://www.w3.org/TR/2017/REC-xpath-31-20170321/ 1
+
+xpath function 的用法：https://www.w3.org/TR/xpath-functions/#func-starts-with 2
+
+绝对定位: 不推荐
+相对定位：
+//*
+//*[contains(@resource-id, ‘login’)]（重点）
+//*[@text=‘登录’] （重点）
+//*[contains(@resource-id, ‘login’) and contains(@text, ‘登录’)] （重点）
+//*[contains(@text, ‘登录’) or contains(@class, ‘EditText’)]（了解）
+//[ends-with(@text,‘号’) ] | //[starts-with(@text,‘姓名’) ] 两个定位的集合列表**（了解）**
+//*[@clickable=“true"]//android.widget.TextView[string-length(@text)>0 and string-length(@text)<20]（了解）
+//[contains(@text, ‘看点’)]/ancestor:://*[contains(@class, ‘EditText’)] （轴）（了解）
+
+原生定位器
+* 官网
+https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html 1
+Uiautomator 定位
+* 写法：’new UiSelector().text(“text")’
+* 滚动查找：
+  - new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(“查找的文本”).instance(0));
+
+
+- PO 封装
+* 1、app.py 封装起来(应用的启动，关闭，重启)
+* 2、将各个页面以Page页的形式封装起来
+* 3、driver 复用，封装base_page.py 将__init__方法，find(),finds(), swipe_find() 底层常用的一些方法封装起来，driver 不要暴露出来。
+
+日志 收集
+设置日志级别
+
+logging.basicConfig(level=logging.INFO)
+
+打印日志
+
+logging.info("find")
+logging.info(locator,value)
+logging 日志级别划分
+
+_nameToLevel = {
+    'CRITICAL': CRITICAL,
+    'FATAL': FATAL,
+    'ERROR': ERROR,
+    'WARN': WARNING,
+    'WARNING': WARNING,
+    'INFO': INFO,
+    'DEBUG': DEBUG,
+    'NOTSET': NOTSET,
+python 会收集当前级别及以上级别的日志。
+
+参考代码
+
+from appium import webdriver
+from appium.webdriver.common.mobileby import MobileBy
+
+from time import sleep
+
+from selenium.common.exceptions import NoSuchElementException
+
+
+class TestContact:
+    def setup(self):
+        caps = {}
+        caps["platformName"] = "android"
+        caps["deviceName"] = "emulator-5554"
+        caps["appPackage"] = "com.tencent.wework"
+        caps["appActivity"] = ".launch.LaunchSplashActivity"
+        caps["noReset"] = "true"
+        # 跳过安装uiautomator2server等 服务
+        caps['skipServerInstallation'] = "true"
+        # 跳过设备的初始化
+        caps['skipDeviceInitialization'] = "true"
+        # 运行前不停止app
+        # caps['dontStopAppOnReset'] = "true"
+
+        # caps['settings[waitForIdleTimeout]'] = 1
+        # 客户端与appium 服务器建立连接的代码
+        self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", caps)
+        self.driver.implicitly_wait(5)
+
+    def teardown(self):
+        self.driver.quit()
+
+    def swipe_find(self, text, num=3):
+        for i in range(num):
+            if i == num - 1:
+                self.driver.implicitly_wait(5)
+                raise NoSuchElementException(f"找到{num}次， 未找到。")
+
+            self.driver.implicitly_wait(1)
+            try:
+                element = self.driver.find_element(MobileBy.XPATH, f"//*[@text='{text}']")
+                self.driver.implicitly_wait(5)
+                return element
+            except:
+                print("未找到")
+                size = self.driver.get_window_size()
+                width = size.get('width')
+                height = size.get("height")
+
+                start_x = width / 2
+                start_y = height * 0.8
+
+                end_x = start_x
+                end_y = height * 0.3
+
+                self.driver.swipe(start_x, start_y, end_x, end_y, 1000)
+
+    def test_addcontact(self):
+        name = "hogwarts_2"
+        phonenum = "13100000002"
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='通讯录']").click()
+        # self.driver.find_element(MobileBy.XPATH, "//*[@text='添加成员']").click()
+        element = self.swipe_find("添加成员")
+        element.click()
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='手动输入添加']").click()
+        self.driver.find_element(MobileBy.XPATH,
+                                 "//*[contains(@text,'姓名')]/../android.widget.EditText").send_keys(name)
+        self.driver.find_element(MobileBy.XPATH, "//*[contains(@text,'手机')]/..//*[@text='必填']").send_keys(phonenum)
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='保存']").click()
+        # 验证添加成员 toast
+        # sleep(1)
+        # print(self.driver.page_source)
+        # assert '添加成功' in self.driver.page_source
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='添加成功']")
+
+
+课后作业
+思考题：
+1.如何将日志保存到文件中？
+
+课后练习：
+
+实现添加联系人功能的PO封装
+实现删除联系人功能的PO封装
 
  
 ************************************************
