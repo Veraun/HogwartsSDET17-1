@@ -64,3 +64,11 @@ class BasePage:
                 end_y = height * 0.3
 
                 self.driver.swipe(start_x, start_y, end_x, end_y, 1000)
+
+    def backward(self, locator, value):
+        while True:
+            try:
+                self.driver.find_element(locator, value)
+                break
+            except:
+                self.driver.back()

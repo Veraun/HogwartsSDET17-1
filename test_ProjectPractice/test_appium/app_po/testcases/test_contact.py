@@ -29,10 +29,11 @@ class TestContact:
             phonenum = "13100000005"
             editpage = self.main.goto_addresslist().click_addcontact().addcontact_menual()
             editpage.edit_contact(name, phonenum)
+            editpage.verify_ok()
         except Exception as e:
             print(e)
-        else:
-            editpage.verify_ok()
+        finally:
+            self.app.goto_main().backward(MobileBy.XPATH, "//*[@text='工作台']")
 
     @pytest.mark.skip
     def test_delcontact(self):
@@ -46,4 +47,4 @@ class TestContact:
             search_page.vertify_del_ok(real_count, element_len, search_name, func_name)
         finally:
             # 保证后续正常运行
-            self.app.goto_main().back_page(MobileBy.XPATH, "//*[@text='工作台']")
+            self.app.goto_main().backward(MobileBy.XPATH, "//*[@text='工作台']")
