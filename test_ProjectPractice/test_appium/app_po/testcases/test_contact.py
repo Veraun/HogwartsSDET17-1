@@ -41,10 +41,8 @@ class TestContact:
             search_name = "hogwarts_3"
             func_name = "删除成员"
             search_page = self.main.goto_addresslist().goto_search()
-            element_len, personMesPage = search_page.search_and_click(search_name)
-            personMesPage.click_more().edit_person().del_contact()
-            real_count = search_page.search(search_name)
-            search_page.vertify_del_ok(real_count, element_len, search_name, func_name)
+            element_len, personPage = search_page.search_and_click(search_name)
+            personPage.click_more().edit_person().del_contact()
         finally:
             # 保证后续正常运行
             self.app.goto_main().backward(MobileBy.XPATH, "//*[@text='工作台']")
