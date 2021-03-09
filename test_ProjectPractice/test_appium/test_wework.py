@@ -52,8 +52,9 @@ class TestSign():
             "settings[waitForIdleTimeout]": 1, # settings 控制 动态页面的等待时长
             'automationName': 'UiAutomator1',
             'unicodeKeyboard': True,  # 使用unicode编码方式发送字符串
-            'resetKeyboard': True  # 将键盘隐藏起来
-            # caps['dontStopAppOnReset'] = "true"  # 运行前不停止app
+            'resetKeyboard': True,  # 将键盘隐藏起来
+            # 'dontStopAppOnReset': "true"  # 运行前不停止app
+
         }
         # 客户端与appium服务器建立连接的代码
         self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", des_caps)
@@ -63,6 +64,7 @@ class TestSign():
         self.driver.quit()
 
 
+    # 封装模拟页面滑动方法
     def swipe_find(self, text, num=3):
         for i in range(num):
             if i == num -1:
@@ -118,8 +120,8 @@ class TestSign():
         self.driver.find_element(MobileBy.XPATH, "//*[@text='外出打卡成功']")
 
     @pytest.mark.parametrize("username, mobilephone", [
-        ('测试10', '13524631110'),
-        ('测试11', '13524631111')
+        ('测试13', '13524631113'),
+        # ('测试11', '13524631111')
     ])
     def test_addcontact(self, username, mobilephone):
         '''
@@ -157,5 +159,18 @@ class TestSign():
         time.sleep(1)
         # print(self.driver.page_source)
         # assert "外出打卡成功" in self.driver.page_source
+
         # 激活隐式等待
         self.driver.find_element(MobileBy.XPATH, "//*[@text='添加成功']")
+
+
+
+    # 删除联系人
+    def test_delcontact(self):
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='通讯录']").click()
+        self.driver.find_element(MobileBy.ID, "com.tencent.wework:id/igk").click()
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='搜索']").send_keys("hogwarts_011")
+        elelist = self.driver.find_elements(MobileBy.XPATH, "//*[@text='hogwarts_011']")
+        # find_elements 方法返回的是一个列表 [element1, element2.....]
+        if len(elelist) > 1:
+            elelist[1].click()

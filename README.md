@@ -289,6 +289,7 @@ des_caps = {
      - noReset ：不停止应用程序，不清除应用程序数据，也不卸载APK
      - fullReset：停止应用程序，清除应用程序数据，卸载APK
      - dontStopAppOnReset：不会kill应用，会继续执行后续用例
+       - 相当于adb shell am start com.tencent.wework/com.tencent.wework.launch.LaunchSplashActivity
  - 性能相关：启动时设置
      - skipServerInstallation：跳过安装uiautomator2server等 服务
      - skipDeviceInitialization：跳过设备的初始化
@@ -297,7 +298,8 @@ des_caps = {
      - systemPort
      - ignoreUnimportantViews
      - relaxed-security
-     
+ - 辅助定位工具
+   - weditor：https://www.cnblogs.com/RuguoCheng/p/10457637.html
 
 ### 微信小程序测试
  
@@ -502,6 +504,13 @@ Uiautomator 定位
 * 2、将各个页面以Page页的形式封装起来
 * 3、driver 复用，封装base_page.py 将__init__方法，find(),finds(), swipe_find() 底层常用的一些方法封装起来，driver 不要暴露出来。
 
+- PO模式封装的主要组成元素
+  - Page对象：完成对页面的封装
+  - driver对象：完成对web、android、ios、接口的封装
+  - 测试用例：调用Page对象实现业务业务并断言
+  - 数据封装：配置文件和数据驱动
+  - Utils：其他功能的封装，改进原生框架的不足
+  
 日志 收集
 设置日志级别
 

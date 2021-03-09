@@ -1,0 +1,3 @@
+Tue, 09 Mar 2021 23:34:02 __init__.py[line:28] INFO item.name : test_addcontact
+Tue, 09 Mar 2021 23:34:02 __init__.py[line:29] INFO item._nodeid : testcases/test_contact.py::TestContact::test_addcontact
+Tue, 09 Mar 2021 23:34:14 base_page.py[line:28] INFO find
