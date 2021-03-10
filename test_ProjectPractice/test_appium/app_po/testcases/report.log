@@ -1,3 +1,18 @@
-Tue, 09 Mar 2021 23:34:02 __init__.py[line:28] INFO item.name : test_addcontact
-Tue, 09 Mar 2021 23:34:02 __init__.py[line:29] INFO item._nodeid : testcases/test_contact.py::TestContact::test_addcontact
-Tue, 09 Mar 2021 23:34:14 base_page.py[line:28] INFO find
+Wed, 10 Mar 2021 11:39:00 __init__.py[line:28] INFO item.name : test_delcontact
+Wed, 10 Mar 2021 11:39:00 __init__.py[line:29] INFO item._nodeid : testcases/test_contact.py::TestContact::test_delcontact
+Wed, 10 Mar 2021 11:39:16 base_page.py[line:28] INFO find
+Wed, 10 Mar 2021 11:39:16 base_page.py[line:29] INFO 定位方法是:xpath,定位元素是：//*[@text='通讯录']
+Wed, 10 Mar 2021 11:39:19 base_page.py[line:40] INFO find and click
+Wed, 10 Mar 2021 11:39:19 base_page.py[line:42] INFO 定位方法是:id,定位元素是：com.tencent.wework:id/igk
+Wed, 10 Mar 2021 11:39:24 base_page.py[line:46] INFO 定位方法是:xpath,定位元素是：//*[@text='搜索'],文本输入的是：hogwarts_11
+Wed, 10 Mar 2021 11:39:28 base_page.py[line:34] INFO finds
+Wed, 10 Mar 2021 11:39:28 base_page.py[line:36] INFO 定位方法是:xpath,定位元素是：//*[@text='hogwarts_11']
+Wed, 10 Mar 2021 11:39:29 base_page.py[line:40] INFO find and click
+Wed, 10 Mar 2021 11:39:29 base_page.py[line:42] INFO 定位方法是:xpath,定位元素是：//*[@text='个人信息']/../../../../..//*[@class='android.widget.RelativeLayout']
+Wed, 10 Mar 2021 11:39:35 base_page.py[line:40] INFO find and click
+Wed, 10 Mar 2021 11:39:35 base_page.py[line:42] INFO 定位方法是:xpath,定位元素是：//*[@text='编辑成员']
+Wed, 10 Mar 2021 11:39:39 base_page.py[line:65] INFO set implicitly_wait :1
+Wed, 10 Mar 2021 11:39:49 base_page.py[line:40] INFO find and click
+Wed, 10 Mar 2021 11:39:49 base_page.py[line:42] INFO 定位方法是:xpath,定位元素是：//*[@text='确定']
+Wed, 10 Mar 2021 11:40:00 base_page.py[line:34] INFO finds
+Wed, 10 Mar 2021 11:40:00 base_page.py[line:36] INFO 定位方法是:xpath,定位元素是：//*[@text='hogwarts_11']

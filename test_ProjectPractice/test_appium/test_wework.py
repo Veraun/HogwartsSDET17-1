@@ -169,7 +169,7 @@ class TestSign():
     def test_delcontact(self):
         self.driver.find_element(MobileBy.XPATH, "//*[@text='通讯录']").click()
         self.driver.find_element(MobileBy.ID, "com.tencent.wework:id/igk").click()
-        self.driver.find_element(MobileBy.XPATH, "//*[@text='搜索']").send_keys("hogwarts_011")
+        self.driver.find_element(MobileBy.XPATH, "//*[@text='搜索']").send_keys("hogwarts_1")
         elelist = self.driver.find_elements(MobileBy.XPATH, "//*[@text='hogwarts_011']")
         # find_elements 方法返回的是一个列表 [element1, element2.....]
         if len(elelist) > 1:

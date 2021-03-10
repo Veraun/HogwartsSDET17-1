@@ -28,4 +28,4 @@ class EditContactPage(BasePage):
         except Exception as e:
             print(f"{message} 失败，原因：{e}")
         finally:
-            self.back_page(MobileBy.XPATH, "//*[@text='工作台']")
+            self.backward(MobileBy.XPATH, "//*[@text='工作台']")

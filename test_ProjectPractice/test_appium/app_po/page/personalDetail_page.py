@@ -17,5 +17,5 @@ class PersonalDetailPage(BasePage):
         pass
 
     def del_contact(self):
-        self.swip_find(MobileBy.XPATH, "//*[@text='删除成员']").click()
+        self.swipe_find(MobileBy.XPATH, "//*[@text='删除成员']").click()
         self.find_and_click(MobileBy.XPATH, "//*[@text='确定']")

@@ -18,7 +18,7 @@ class AddressListPage(BasePage):
     # def __init__(self, driver):
     #     self.driver = driver
     def click_addcontact(self):
-        element = self.swipe_find("添加成员")
+        element = self.swipe_find(MobileBy.XPATH, "//*[@text='添加成员']", num=5)
         element.click()
         return AddContactPage(self.driver)
 

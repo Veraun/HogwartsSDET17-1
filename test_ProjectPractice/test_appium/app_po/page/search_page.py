@@ -30,3 +30,12 @@ class SearchPage(BasePage):
     def search(self, search_content):
         elements = self.finds(MobileBy.XPATH, f"//*[@text='{search_content}']")
         return len(elements)
+
+    def del_ok(self, real_count, expect_count, search_content, msg=""):
+        try:
+            if real_count == expect_count+1:
+                print(f"{msg}'{search_content}'成功")
+        except Exception as e:
+            print(f"{msg}'{search_content}'失败， 原因： {e}")
+        finally:
+            self.backward(MobileBy.XPATH, "//*[@text='工作台']")
