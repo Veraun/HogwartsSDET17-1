@@ -626,8 +626,6 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
 ## 第七部分---ui自动化测试框架
 
 ### 设备交互API
-`
-
         # 测试过程中模拟来电
         self.driver.make_gsm_call('13524630000', GsmCallActions.CALL)
         # 测试过程中模拟来短信
@@ -641,7 +639,6 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
         # 测试过程中模拟结束视频录制
         self.driver.stop_recording_screen()
         
-`
 
 
 ************************************************
