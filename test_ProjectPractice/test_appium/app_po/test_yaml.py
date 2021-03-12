@@ -25,4 +25,5 @@ def test_yaml():
                        'skipServerInstallation': 'true',
                        'skipDeviceInitialization': 'true'}, 'server': {'ip': '127.0.0.1', 'port': 4723}}
     print(yaml.safe_dump(pythonobj))
+    print(yaml.safe_dump(pythonobj))
     logging.info(yaml.safe_dump(pythonobj))

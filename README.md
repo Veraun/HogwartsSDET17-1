@@ -618,9 +618,58 @@ class TestContact:
 
 实现添加联系人功能的PO封装
 实现删除联系人功能的PO封装
-
+https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_appium/app_po/testcases/test_contact.py
  
 ************************************************
 ************************************************ 
 
 ## 第七部分---ui自动化测试框架
+
+### 设备交互API
+`
+
+        # 测试过程中模拟来电
+        self.driver.make_gsm_call('13524630000', GsmCallActions.CALL)
+        # 测试过程中模拟来短信
+        self.driver.send_sms('13524630000', 'hello appium api')
+        # 测试过程中模拟切换网络
+        self.driver.set_network_connection(1)
+        # 测试过程中截图
+        self.driver.get_screenshot_as_file('./photos/img.png')
+        # 测试过程中模拟开始视频录制
+        self.driver.start_recording_screen()
+        # 测试过程中模拟结束视频录制
+        self.driver.stop_recording_screen()
+        
+`
+
+
+************************************************
+************************************************ 
+
+## 第八部分---打造自己的ui自动化测试框架
+### 标题
+ -打造自己的测试框架 （一）
+
+### 课程价值
+    - UI自动化测试框架目标
+    - 使用雪球app复用框架
+    - 黑名单机制
+### 框架的价值
+    - 把业务代码的重复性功能，放入框架
+    - 把框架移植到新的业务
+    - UI自动化测试框架：
+        易用
+        基础的功能封装（appium代码）
+        完成弹窗处理
+        截图
+        录屏
+        日志
+### 雪球 app
+    包名： com.xueqiu.android
+    活动名：.view.WelcomeActivityAlias
+    
+### 作业
+ - 提取基础框架，用框架实现雪球的点击行情
+
+ - 将黑名单功能放到装饰器，装饰 find 方法 （提高）
