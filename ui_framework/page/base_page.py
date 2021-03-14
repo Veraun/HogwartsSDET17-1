@@ -16,7 +16,9 @@ import logging
 from appium.webdriver.common.mobileby import MobileBy
 from appium.webdriver.webdriver import WebDriver
 from selenium.common import exceptions
-from selenium.common.exceptions import NoSuchElementException
+
+from ui_framework.page.handle_black_list import handle_black
+
 
 class BasePage:
     logging.basicConfig(level=logging.INFO, filename="../logs/app.log",
@@ -26,29 +28,7 @@ class BasePage:
     def __init__(self, driver: WebDriver = None):
         self.driver = driver
 
-    def black(self, func):
-        black_list = ['//*[@resource-id="com.xueqiu.android:id/iv_close"]']
-
-        def wrapper(*args, **kwargs):
-            try:
-                print(f"进入装饰器,{func.__name__}")
-                obj = func(*args, **kwargs)
-                if len(obj) == 0:
-                    raise NoSuchElementException("未找到此元素")
-                return obj
-            except exceptions :
-                for ele_xpath in black_list:
-                    # 用火眼金睛去看，妖魔鬼怪是否存在
-                    eles = self.finds(MobileBy.XPATH, ele_xpath)
-                    # 妖魔鬼怪出现了，需要斩杀
-                    if len(eles) > 0:
-                        eles[0].click()
-                    return func(*args, **kwargs)
-                print("出来装饰器")
-
-        return wrapper
-
-    @black
+    @handle_black
     def find_new(self, locator, value):
         logging.info("find")
         logging.info("定位方法是:%s,定位元素是：%s", locator, value)
