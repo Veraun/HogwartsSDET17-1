@@ -670,3 +670,180 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
  - 提取基础框架，用框架实现雪球的点击行情
 
  - 将黑名单功能放到装饰器，装饰 find 方法 （提高）
+ 
+ 
+### 标题
+ - 打造自己的测试框架 （二）
+
+### 课程价值
+    UI自动化测试框架优化
+    使用关键字驱动
+    使用录屏
+    使用截屏
+    使用log
+
+
+### 使用装饰器改造黑名单 
+ - 意义
+ - 实现
+ - 将黑名单功能移动到装饰器
+
+        def black_wrapper(fun):
+    
+            def run(*args, **kwargs):
+        
+                basepage = args[0]
+        
+                try:
+        
+                    return fun(*args, **kwargs)
+        
+                # 捕获元素没找到异常
+        
+                except Exception as e:
+        
+                    # 遍历黑名单中的元素，进行处理
+        
+                    for black in basepage.black_list:
+        
+                        eles = basepage.finds(*black)
+        
+                        # 黑名单被找到
+        
+                        if len(eles) > 0:
+        
+                            # 对黑名单元素进行点击，可以自由扩展
+        
+                            eles[0].click()
+        
+                            return fun(*args, **kwargs)
+        
+                    raise e
+        
+            return run
+
+### 关键字驱动
+ - 意义
+
+ - 实现
+    - 使用 pyyaml 加载 yaml 文件
+    
+    - 使用分支实现不同关键字
+    
+    - 将企业微信的 PO 改造成关键字驱动
+
+
+        goto_market:
+        
+          - by: xpath
+        
+            locator: "//*[@resource-id='android:id/tabs']//*[@text='行情']"
+        
+            action: click
+
+
+        def load(self, yaml_path):
+    
+            with open(yaml_path, encoding="utf-8") as f:
+    
+                data = yaml.load(f)
+    
+            for step in data:
+    
+                xpath_expr = step.get(self.FIND)
+    
+                action = step.get(self.ACTION)
+    
+                if action == self.FIND_AND_CLICK:
+    
+                    self.find_and_click(By.XPATH, xpath_expr)
+    
+                elif action == self.SEND:
+    
+                    content = step.get(self.CONTENT)
+    
+                    self.send(By.XPATH, xpath_expr, content)
+
+### 录屏 
+ - 意义
+
+ - 实现
+    - 介绍 scrcpy 使用：原理，录屏
+    
+    - 使用 subprocess 操作 scrcpy 进行录屏
+
+            import os
+            
+            import signal
+            
+            import subprocess
+            
+            import pytest
+            
+            @pytest.fixture(scope='module', autouse=True)
+            
+            def record_vedio():
+            
+                cmd = "scrcpy --record file.mp4"
+            
+                p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            
+                print(p)
+            
+                yield
+            
+                os.kill(p.pid, signal.CTRL_C_EVENT)
+
+### 截图
+ - 意义
+ - 实现
+    - 使用 Appium 进行截图
+    
+    - 使用 allure 加载
+
+
+    # 放入 allure 报告
+    allure.attach(self.driver.get_screenshot_as_png(), attachment_type=allure.attachment_type.PNG)
+
+### log定制
+ - 意义
+ - 实现
+    - 原理
+    - 代码
+
+
+        # 定义 log 的基础内容
+        
+        def log_init():
+        
+            # 设置格式
+        
+            log_format_str = '[%(asctime)s]  %(filename)s:%(lineno)d:%(funcName)s: %(message)s'
+        
+            format = logging.Formatter(log_format_str)
+        
+            # 根据 log 标识获取 log
+        
+            root = logging.getLogger("my_log")
+        
+            # 加入文件句柄
+        
+            h = logging.handlers.RotatingFileHandler("./tmp.log", mode='a', encoding="utf-8")
+        
+            h.setFormatter(format)
+        
+            # 加入输出流句柄
+        
+            s = logging.StreamHandler()
+        
+            s.setFormatter(format)
+        
+            root.addHandler(h)
+        
+            root.addHandler(s)
+        
+            root.setLevel(logging.DEBUG)
+        
+        # 获取 log
+        
+        log = logging.getLogger("my_log")
