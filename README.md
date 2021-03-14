@@ -686,6 +686,24 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
 ### 使用装饰器改造黑名单 
  - 意义
  - 实现
+ 
+        # 装饰器使用
+        def b(func): #func == a
+            def run(*args, **kwargs):  # args == ("我是k")
+                print("你好")
+                func(*args, **kwargs)  # 装饰器：调用a("我是k")
+                print("再见")
+            return run
+        
+        @b
+        def a(k):       # 被装饰对象
+            print("我是a")
+            print(k)
+        
+        def test():     # 调用
+            a("我是k")
+ 
+ 
  - 将黑名单功能移动到装饰器
 
         def black_wrapper(fun):

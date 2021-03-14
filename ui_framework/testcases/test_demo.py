@@ -10,17 +10,17 @@
 
 # 装饰器使用
 
-def b(func):
-    def run(*args, **kwargs):
+def b(func): #func == a
+    def run(*args, **kwargs):  # args == ("我是k")
         print("你好")
-        func(*args, **kwargs)
+        func(*args, **kwargs)  # 装饰器：调用a("我是k")
         print("再见")
     return run
 
 @b
-def a(k):
+def a(k):       # 被装饰对象
     print("我是a")
     print(k)
 
-def test():
+def test():     # 调用
     a("我是k")
