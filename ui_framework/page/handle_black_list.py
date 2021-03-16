@@ -12,6 +12,8 @@ from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
+from ui_framework.page.logger import log, log_init
+
 
 def handle_black(func):
     def wrapper(*args, **kwargs):
@@ -20,6 +22,8 @@ def handle_black(func):
         instance = args[0]
         try:
             print(f"进入装饰器,{func.__name__}")
+            log_init()
+            log.debug("新定位元素是：%s", args[2])
             obj = func(*args, **kwargs)
             return obj
         except Exception:

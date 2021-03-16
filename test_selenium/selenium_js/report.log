@@ -1,2 +1,2 @@
-Tue, 23 Feb 2021 19:50:47 __init__.py[line:28] INFO item.name : test_datetime
-Tue, 23 Feb 2021 19:50:47 __init__.py[line:29] INFO item._nodeid : test_js.py::TestJs::test_datetime
+Tue, 16 Mar 2021 11:51:28 __init__.py[line:28] INFO item.name : test_hotel
+Tue, 16 Mar 2021 11:51:28 __init__.py[line:29] INFO item._nodeid : test_js.py::TestJs::test_hotel

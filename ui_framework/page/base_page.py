@@ -19,20 +19,20 @@ from appium.webdriver.webdriver import WebDriver
 from selenium.common import exceptions
 
 from ui_framework.page.handle_black_list import handle_black
+from ui_framework.page.logger import log_init, log
 
 
 class BasePage:
-    logging.basicConfig(level=logging.INFO, filename="../logs/app.log",
-                        format="[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]", filemode="a",
-                        datefmt="'%Y-%m-%d %I:%M:%S %p'")
+    # logging.basicConfig(level=logging.INFO, filename="../logs/app.log",
+    #                     format="[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]", filemode="a",
+    #                     datefmt="'%Y-%m-%d %I:%M:%S %p'")
 
     def __init__(self, driver: WebDriver = None):
         self.driver = driver
 
     @handle_black
     def find_new(self, locator, value):
-        logging.info("find")
-        logging.info("定位方法是:%s,定位元素是：%s", locator, value)
+        log.debug("新定位方法是:%s,定位元素是：%s", locator, value)
         return self.driver.find_element(locator, value)
 
     def find_old(self, locator, value):
@@ -52,9 +52,10 @@ class BasePage:
                     return self.find_old(locator, value)
 
     def finds(self, locator, value):
-        logging.info("finds")
+        # logging.info("finds")
         # logging.info(locator, value)
-        logging.info("定位方法是:%s,定位元素是：%s", locator, value)
+        # logging.info("定位方法是:%s,定位元素是：%s", locator, value)
+        log.debug("新定位方法是:%s,定位元素是：%s", locator, value)
         return self.driver.find_elements(locator, value)
 
     def find_and_click(self, locator, value):

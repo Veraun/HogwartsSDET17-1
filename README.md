@@ -832,8 +832,11 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
 ### log定制
  - 意义
  - 实现
-    - 原理
+    - 原理：两部曲
+     - 1、log_init()
+     - 2、log.debug("新定位元素是：%s", args[2])
     - 代码
+
 
 
         # 定义 log 的基础内容
@@ -871,3 +874,80 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
         # 获取 log
         
         log = logging.getLogger("my_log")
+
+
+************************************************
+************************************************ 
+
+## 第九部分---客户端测试平台
+
+### 自动遍历测试技术
+    Google android原生的monkey、app crawler
+    百度smartmonkey
+    腾讯newmonkey
+    vigossjjj smart_monkey
+    macaca的NoSmoke
+    头条的zhangzhao maxim
+    seveniruby appcrawler （重点讲这个）
+
+### android monkey健壮性测试工具
+ - adb shell monkey 100 对所有包随机操作
+ - adb shell monkey -p com.xueqiu.android 100 对指定包 
+ - adb shell monkey -p com.xueqiu.android -s 20 80 时间种子 
+ - adb shell monkey -p com.xueqiu.android -vv -s 20 80 详细日志
+ - adb shell monkey -p com.xueqiu.android --throttle 5000 100 时间延迟
+ - adb shell monkey -p com.xueqiu.android --pct-touch 10 1000 事件百分比
+ - 综合场景：adb shell monkey -p com.xueqiu.android -vv --throttle 500 --pct-touch 90 200
+ 
+ - 常用事件
+   --pct-touch：触摸事件，比如点击
+   --pct-motion：动作事件，比如滑动（直线）
+   --pct-trackball：轨迹事件，比如移动+点击，曲线滑动
+   --pct-majornav：主要导航事件，比如回退按键、菜单按键
+   
+### android maxim 遍历测试工具
+ - github：https://github.com/zhangzhao4444/Maxim.git
+ - push两个文件到手机的sdcard
+  - adb push framework.jar /sdcard
+  - adb push monkey.jar /sdcard
+ - git文档技术支持
+  - https://github.com/zhangzhao4444/Maxim
+  - cmd 固定命令 ： 
+   - adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.xueqiu.android --uiautomatormix --running-minutes 60 -v -v
+        tv.panda.test.monkey.Monkey： monkey入口类，不要修改
+        com.xueqiu.android： 被测app包名，需要修改
+        --uiautomatormix： 遍历策略
+        
+### 多平台自动化遍历测试工具：appcrawler （思寒大佬，推荐）
+#### 开源地址
+ - https://github.com/seveniruby/AppCrawler
+#### appcrawler底层依赖
+ - appium
+ - adb
+ - macaca
+ - selenium
+#### appium底层引擎
+ - wda
+ - uiautomator2AppCra
+
+
+### 跨平台设备管理方案-selenium grid
+#### 优点
+ - 所有测试的中心入口点
+ - 管理和控制浏览器运行的Node/环境
+ - 扩展
+ - 并行运行测试
+ - 跨平台测试
+ - 负载平衡
+#### 下载
+ - https://www.selenium.dev/downloads/
+#### 配置NodeWebDriver.json
+ - https://github.com/SeleniumHQ/selenium/blob/selenium-3.141.59/java/server/src/org/openqa/grid/common/defaults/DefaultNodeWebDriver.json
+#### 启动执行
+ - 1进入jar文件下载路径，启动主机：java -jar selenium-server-standalone-3.141.59.jar -role hub
+ - 2进入jar文件下载路径，启动子机1：java -jar selenium-server-standalone-3.141.59.jar -role node -nodeConfig node.json
+ - 3进入jar文件下载路径，启动子机2：java -jar selenium-server-standalone-3.141.59.jar -role node -nodeConfig node.json
+#### 目的
+ - 脚本运行对node进行分发
+#### 脚本
+ - selenium_grid/test_grid.py

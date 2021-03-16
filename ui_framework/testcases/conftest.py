@@ -14,8 +14,12 @@ import subprocess
 import pytest
 
 # 录屏:scrcpy
+from ui_framework.page.logger import log_init
+
+
 @pytest.fixture(scope="module", autouse=True)
 def record():
+    # log_init()
     # 用例运行前做一些事情
     cmd = "scrcpy -p 1234 -m 800 -Nr tmp.mp4"
     p = subprocess.Popen(cmd, shell=True)
