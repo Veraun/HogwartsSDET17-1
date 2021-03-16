@@ -1,3 +1,5 @@
 /.env/
 /.idea/
 / .pytest_cache /
+/.mp4
+/.png

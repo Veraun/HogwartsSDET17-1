@@ -1,0 +1,2 @@
+2021-03-16 09:30:43.453 scrcpy[1206:6214166] INFO: scrcpy 1.11 <https://github.com/Genymobile/scrcpy>
+2021-03-16 09:30:43.986 scrcpy[1206:6214207] INFO: Recording started to mp4 file: tmp.mp4

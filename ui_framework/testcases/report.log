@@ -1,27 +1,22 @@
-Sun, 14 Mar 2021 16:03:49 __init__.py[line:28] INFO item.name : test_goto_market
-Sun, 14 Mar 2021 16:03:49 __init__.py[line:29] INFO item._nodeid : test_market.py::TestMarket::test_goto_market
-Sun, 14 Mar 2021 16:03:58 base_page.py[line:60] INFO find and click
-Sun, 14 Mar 2021 16:03:58 base_page.py[line:61] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
-Sun, 14 Mar 2021 16:03:58 base_page.py[line:33] INFO find
-Sun, 14 Mar 2021 16:03:58 base_page.py[line:34] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
-Sun, 14 Mar 2021 16:04:04 base_page.py[line:54] INFO finds
-Sun, 14 Mar 2021 16:04:04 base_page.py[line:56] INFO 定位方法是:xpath,定位元素是：//*[@resource-id="com.xueqiu.android:id/iv_close"]
-Sun, 14 Mar 2021 16:04:10 base_page.py[line:33] INFO find
-Sun, 14 Mar 2021 16:04:10 base_page.py[line:34] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
-Sun, 14 Mar 2021 16:04:10 base_page.py[line:60] INFO find and click
-Sun, 14 Mar 2021 16:04:10 base_page.py[line:61] INFO 定位方法是:xpath,定位元素是：//*[@text='行情']
-Sun, 14 Mar 2021 16:04:10 base_page.py[line:33] INFO find
-Sun, 14 Mar 2021 16:04:10 base_page.py[line:34] INFO 定位方法是:xpath,定位元素是：//*[@text='行情']
-Sun, 14 Mar 2021 16:04:16 base_page.py[line:54] INFO finds
-Sun, 14 Mar 2021 16:04:16 base_page.py[line:56] INFO 定位方法是:xpath,定位元素是：//*[@resource-id="com.xueqiu.android:id/iv_close"]
-Sun, 14 Mar 2021 16:04:16 base_page.py[line:33] INFO find
-Sun, 14 Mar 2021 16:04:16 base_page.py[line:34] INFO 定位方法是:xpath,定位元素是：//*[@text='行情']
-Sun, 14 Mar 2021 16:04:18 base_page.py[line:60] INFO find and click
-Sun, 14 Mar 2021 16:04:18 base_page.py[line:61] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/action_search']
-Sun, 14 Mar 2021 16:04:18 base_page.py[line:33] INFO find
-Sun, 14 Mar 2021 16:04:18 base_page.py[line:34] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/action_search']
-Sun, 14 Mar 2021 16:04:20 base_page.py[line:54] INFO finds
-Sun, 14 Mar 2021 16:04:20 base_page.py[line:56] INFO 定位方法是:xpath,定位元素是：//*[@resource-id="com.xueqiu.android:id/iv_close"]
-Sun, 14 Mar 2021 16:04:27 base_page.py[line:33] INFO find
-Sun, 14 Mar 2021 16:04:27 base_page.py[line:34] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/action_search']
-Sun, 14 Mar 2021 16:04:27 base_page.py[line:66] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/search_input_text'],文本输入的是：alibaba
+Tue, 16 Mar 2021 09:30:43 __init__.py[line:28] INFO item.name : test_goto_market
+Tue, 16 Mar 2021 09:30:43 __init__.py[line:29] INFO item._nodeid : test_market.py::TestMarket::test_goto_market
+Tue, 16 Mar 2021 09:30:53 base_page.py[line:61] INFO find and click
+Tue, 16 Mar 2021 09:30:53 base_page.py[line:62] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
+Tue, 16 Mar 2021 09:30:53 base_page.py[line:34] INFO find
+Tue, 16 Mar 2021 09:30:53 base_page.py[line:35] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
+Tue, 16 Mar 2021 09:31:03 base_page.py[line:55] INFO finds
+Tue, 16 Mar 2021 09:31:03 base_page.py[line:57] INFO 定位方法是:xpath,定位元素是：//*[@resource-id="com.xueqiu.android:id/iv_close"]
+Tue, 16 Mar 2021 09:31:13 base_page.py[line:34] INFO find
+Tue, 16 Mar 2021 09:31:13 base_page.py[line:35] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
+Tue, 16 Mar 2021 09:31:14 base_page.py[line:61] INFO find and click
+Tue, 16 Mar 2021 09:31:14 base_page.py[line:62] INFO 定位方法是:xpath,定位元素是：//*[@text='行情']
+Tue, 16 Mar 2021 09:31:14 base_page.py[line:34] INFO find
+Tue, 16 Mar 2021 09:31:14 base_page.py[line:35] INFO 定位方法是:xpath,定位元素是：//*[@text='行情']
+Tue, 16 Mar 2021 09:31:20 base_page.py[line:55] INFO finds
+Tue, 16 Mar 2021 09:31:20 base_page.py[line:57] INFO 定位方法是:xpath,定位元素是：//*[@resource-id="com.xueqiu.android:id/iv_close"]
+Tue, 16 Mar 2021 09:31:20 base_page.py[line:34] INFO find
+Tue, 16 Mar 2021 09:31:20 base_page.py[line:35] INFO 定位方法是:xpath,定位元素是：//*[@text='行情']
+Tue, 16 Mar 2021 09:31:22 base_page.py[line:61] INFO find and click
+Tue, 16 Mar 2021 09:31:22 base_page.py[line:62] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/action_search']
+Tue, 16 Mar 2021 09:31:22 base_page.py[line:34] INFO find
+Tue, 16 Mar 2021 09:31:22 base_page.py[line:35] INFO 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/action_search']

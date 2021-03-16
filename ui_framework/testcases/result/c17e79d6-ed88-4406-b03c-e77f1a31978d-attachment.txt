@@ -1,0 +1,20 @@
+[32mINFO    [0m root:base_page.py:61 find and click
+[32mINFO    [0m root:base_page.py:62 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
+[32mINFO    [0m root:base_page.py:34 find
+[32mINFO    [0m root:base_page.py:35 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
+[32mINFO    [0m root:base_page.py:55 finds
+[32mINFO    [0m root:base_page.py:57 定位方法是:xpath,定位元素是：//*[@resource-id="com.xueqiu.android:id/iv_close"]
+[32mINFO    [0m root:base_page.py:34 find
+[32mINFO    [0m root:base_page.py:35 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/post_status']
+[32mINFO    [0m root:base_page.py:61 find and click
+[32mINFO    [0m root:base_page.py:62 定位方法是:xpath,定位元素是：//*[@text='行情']
+[32mINFO    [0m root:base_page.py:34 find
+[32mINFO    [0m root:base_page.py:35 定位方法是:xpath,定位元素是：//*[@text='行情']
+[32mINFO    [0m root:base_page.py:55 finds
+[32mINFO    [0m root:base_page.py:57 定位方法是:xpath,定位元素是：//*[@resource-id="com.xueqiu.android:id/iv_close"]
+[32mINFO    [0m root:base_page.py:34 find
+[32mINFO    [0m root:base_page.py:35 定位方法是:xpath,定位元素是：//*[@text='行情']
+[32mINFO    [0m root:base_page.py:61 find and click
+[32mINFO    [0m root:base_page.py:62 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/action_search']
+[32mINFO    [0m root:base_page.py:34 find
+[32mINFO    [0m root:base_page.py:35 定位方法是:xpath,定位元素是：//*[@resource-id='com.xueqiu.android:id/action_search']

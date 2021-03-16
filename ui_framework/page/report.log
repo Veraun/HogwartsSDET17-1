@@ -1,0 +1,2 @@
+Mon, 15 Mar 2021 17:31:06 __init__.py[line:28] INFO item.name : test_y
+Mon, 15 Mar 2021 17:31:06 __init__.py[line:29] INFO item._nodeid : test_yml.py::test_y

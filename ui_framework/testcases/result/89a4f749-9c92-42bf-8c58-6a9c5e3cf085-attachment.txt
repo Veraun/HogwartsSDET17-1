@@ -1,0 +1,4 @@
+/usr/local/Cellar/scrcpy/1.11/share/scrcpy/scrcpy-server: 1 file pushed. 5.3 MB/s (25454 bytes in 0.005s)
+进入装饰器,find_new
+进入装饰器,find_new
+进入装饰器,find_new

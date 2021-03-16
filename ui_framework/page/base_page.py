@@ -13,6 +13,7 @@
 
 import logging
 
+import yaml
 from appium.webdriver.common.mobileby import MobileBy
 from appium.webdriver.webdriver import WebDriver
 from selenium.common import exceptions
@@ -81,7 +82,6 @@ class BasePage:
             if i == num - 1:
                 logging.info("set implicitly_wait :5")
                 self.driver.implicitly_wait(5)
-                raise NoSuchElementException(f"找到{num}次， 未找到。")
             logging.info("set implicitly_wait :1")
             self.driver.implicitly_wait(1)
             try:
@@ -92,3 +92,24 @@ class BasePage:
             except:
                 print("未找到")
                 self.swip()
+
+    def parse(self, yaml_path, func_name):
+        '''
+        解析关键字，实现相应动作
+        :param yaml_path:
+        :param func_name:
+        :return:
+        '''
+        with open(yaml_path, "r", encoding="utf-8") as f:
+            function = yaml.load(f)
+        steps = function[func_name]
+        for step in steps:
+            if step.get("action") == "find_and_click":
+                self.find_and_click(step.get("locator"), step.get("value"))
+
+    # 封装截图功能
+    def screenshot(self):
+        self.driver.save_screenshot("tmp.png")
+        # 或
+        # return self.driver.get_screenshot_as_png()
+

@@ -678,9 +678,15 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
 ### 课程价值
     UI自动化测试框架优化
     使用关键字驱动
-    使用录屏
+    使用录屏:scrcpy
+      mac安装：brew install scrcpy
+      命令执行：scrcpy -p 1234 -m 800 -Nr tmp.mp4
+      文档：https://github.com/Genymobile/scrcpy/issues/382
     使用截屏
     使用log
+    使用allure
+        pytest test_market.py --alluredir=./result
+        allure serve ./result 
 
 
 ### 使用装饰器改造黑名单 
