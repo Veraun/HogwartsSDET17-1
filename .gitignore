@@ -1,5 +1,7 @@
 /.env/
 /.idea/
 / .pytest_cache /
-/.mp4
-/.png
+*.mp4
+*.png
+/allure-report
+/ui_framework/testcases/result
