@@ -919,6 +919,8 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
         --uiautomatormix： 遍历策略
         
 ### 多平台自动化遍历测试工具：appcrawler （思寒大佬，推荐）
+#### 昵称
+ - app扫地机器人，爬虫
 #### 开源地址
  - https://github.com/seveniruby/AppCrawler
 #### appcrawler底层依赖
@@ -928,7 +930,40 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
  - selenium
 #### appium底层引擎
  - wda
- - uiautomator2AppCra
+ - uiautomator2AppCrawler
+#### 环境依赖
+ - java8
+ - appium 1.8.x
+#### 安装方式
+ - 直接下载jar包
+#### 启动
+ - 启动appium
+ - 启动模拟器或者真机
+ - 开始自动遍历
+#### 生成样板配置示例
+ - java -jar appcrawler.jar --demo
+   - 会在当前目录下生成一个demo.yml
+ - 执行
+   - 通过配置文件执行:java -jar appcrawler.jar -c demo.yml
+#### 自动遍历支持
+ - selectedList：需要被遍历的元素范围
+ - firstList：优先被点击
+ - lastList：最后被点击
+ - tagLimitMax：同祖先(同类型)的元素最多点击多少次
+ - backButton：当所有元素都被点击后默认后退控件定位
+ - blackList：黑名单
+ - maxDepth：6 遍历的最大深度(计算深度：根据activity)
+#### 自动遍历过程(框架算法)
+ - 信息获取
+   - 把当前app的界面dump为xml结构
+ - 获取待遍历元素
+   - 遍历范围 selectedList
+   - 过滤黑名单 小控件 不可见控件 blackList
+   - 重排控件顺序 firstList lastList
+   - 跳过已点击+跳过限制点击的控件 tagLimitMax
+   - 根据匹配的规则执行action 
+ - 循环上面的步骤
+
 
 
 ### 跨平台设备管理方案-selenium grid
@@ -951,3 +986,9 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
  - 脚本运行对node进行分发
 #### 脚本
  - selenium_grid/test_grid.py
+ 
+ 
+************************************************
+************************************************ 
+
+## 第十部分---服务端接口测试
