@@ -992,3 +992,406 @@ https://github.com/wiki918/HogwartsSDET17/blob/main/test_ProjectPractice/test_ap
 ************************************************ 
 
 ## 第十部分---服务端接口测试
+### tcp协议分析
+#### 抓包分析tcp协议
+- 协议分析工具
+    - 网络监听：TcpDump + WireShark
+    - 代理Proxy
+        - 推荐工具：手工测试charles[全平台]、全部测试burpsuite[全平台java]
+        - 自动化测试：mitmproxy
+        - 其他代理：fiddler[仅windows]、AnyProxy[全平台]
+    - 协议客户端工具：curl、postman
+#### TcpDump + WireShark配合使用
+- 抓取访问百度的数据包
+    - 1.sudo tcpdump host www.baidu.com -w /Users/xmly/Documents/wireshark/tmp/tcpdump.log
+    - 2.curl http://www.baidu.com
+    - 3.停止tcpdump
+    - 4.使用wireshark打开tcpdump.log
+
+#### TCP的三次握手与四次挥手
+- 三次握手：在进行业务通信前，必须建立好连接
+    - 第一次握手：建立连接时，客户端发送syn包（syn=j）到服务器，并进入SYN_SENT状态，等待服务器确认；SYN：同步序列编号（Synchronize Sequence Numbers）。
+    - 第二次握手：服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态；
+    - 第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。
+- 四次挥手：选择关闭连接，以回收资源。“和平分手”
+    - 第一次挥手：主动关闭方发送第一个包，其中FIN标志位为1，发送顺序号seq为X。
+    - 第二次挥手：被动关闭方收到FIN包后发送第二个包，其中发送顺序号seq为Z，接收顺序号ack为X+1。
+    - 第三次挥手：被动关闭方再发送第三个包，其中FIN标志位为1，发送顺序号seq为Y，接收顺序号ack为X。
+    - 第四次挥手：主动关闭方发送第四个包，其中发送顺序号为X，接收顺序号为Y。至此，完成四次挥手。
+
+### postman使用
+- 创建接口测试集合
+- 创建post(form、json、file)、get类型接口
+- 设置和获取cookie、token
+- 创建全局变量、插入断言
+- 数据驱动(参数化)，支持csv、json文件
+- 测试集的运行
+
+### 使用curl发送请求
+- 客户端模拟请求工具
+    - nc tcp/udp协议发送
+    - curl 最常使用的http请求工具
+    - postman综合性的http协议测试工具
+    - 代理工具、IDE工具、浏览器插件工具
+    
+- curl常见用法
+    - url=http://www.baidu.com
+    - get请求：curl $url
+    - post请求：curl -d 'xxx' $url
+    - proxy使用：curl -x 'http://127.0.0.1:8080' $url
+- curl基本参数
+        
+        Usage: curl [options...] <url>
+        Options: (H) means HTTP/HTTPS only, (F) means FTP only
+             --anyauth       Pick "any" authentication method (H)
+         -a, --append        Append to target file when uploading (F/SFTP)
+             --basic         Use HTTP Basic Authentication (H)
+             --cacert FILE   CA certificate to verify peer against (SSL)
+             --capath DIR    CA directory to verify peer against (SSL)
+         -E, --cert CERT[:PASSWD]  Client certificate file and password (SSL)
+             --cert-status   Verify the status of the server certificate (SSL)
+             --cert-type TYPE  Certificate file type (DER/PEM/ENG) (SSL)
+             --ciphers LIST  SSL ciphers to use (SSL)
+             --compressed    Request compressed response (using deflate or gzip)
+         -K, --config FILE   Read config from FILE
+             --connect-timeout SECONDS  Maximum time allowed for connection
+             --connect-to HOST1:PORT1:HOST2:PORT2 Connect to host (network level)
+         -C, --continue-at OFFSET  Resumed transfer OFFSET
+         -b, --cookie STRING/FILE  Read cookies from STRING/FILE (H)
+         -c, --cookie-jar FILE  Write cookies to FILE after operation (H)
+             --create-dirs   Create necessary local directory hierarchy
+             --crlf          Convert LF to CRLF in upload
+             --crlfile FILE  Get a CRL list in PEM format from the given file
+         -d, --data DATA     HTTP POST data (H)
+             --data-raw DATA  HTTP POST data, '@' allowed (H)
+             --data-ascii DATA  HTTP POST ASCII data (H)
+             --data-binary DATA  HTTP POST binary data (H)
+             --data-urlencode DATA  HTTP POST data url encoded (H)
+             --delegation STRING  GSS-API delegation permission
+             --digest        Use HTTP Digest Authentication (H)
+             --disable-eprt  Inhibit using EPRT or LPRT (F)
+             --disable-epsv  Inhibit using EPSV (F)
+             --dns-servers   DNS server addrs to use: 1.1.1.1;2.2.2.2
+             --dns-interface  Interface to use for DNS requests
+             --dns-ipv4-addr  IPv4 address to use for DNS requests, dot notation
+             --dns-ipv6-addr  IPv6 address to use for DNS requests, dot notation
+         -D, --dump-header FILE  Write the received headers to FILE
+             --egd-file FILE  EGD socket path for random data (SSL)
+             --engine ENGINE  Crypto engine (use "--engine list" for list) (SSL)
+             --expect100-timeout SECONDS How long to wait for 100-continue (H)
+         -f, --fail          Fail silently (no output at all) on HTTP errors (H)
+             --fail-early    Fail on first transfer error, do not continue
+             --false-start   Enable TLS False Start.
+         -F, --form CONTENT  Specify HTTP multipart POST data (H)
+             --form-string STRING  Specify HTTP multipart POST data (H)
+             --ftp-account DATA  Account data string (F)
+             --ftp-alternative-to-user COMMAND  String to replace "USER [name]" (F)
+             --ftp-create-dirs  Create the remote dirs if not present (F)
+             --ftp-method [MULTICWD/NOCWD/SINGLECWD]  Control CWD usage (F)
+             --ftp-pasv      Use PASV/EPSV instead of PORT (F)
+         -P, --ftp-port ADR  Use PORT with given address instead of PASV (F)
+             --ftp-skip-pasv-ip  Skip the IP address for PASV (F)
+             --ftp-pret      Send PRET before PASV (for drftpd) (F)
+             --ftp-ssl-ccc   Send CCC after authenticating (F)
+             --ftp-ssl-ccc-mode ACTIVE/PASSIVE  Set CCC mode (F)
+             --ftp-ssl-control  Require SSL/TLS for FTP login, clear for transfer (F)
+         -G, --get           Send the -d data with a HTTP GET (H)
+         -g, --globoff       Disable URL sequences and ranges using {} and []
+         -H, --header LINE   Pass custom header LINE to server (H)
+         -I, --head          Show document info only
+         -h, --help          This help text
+             --hostpubmd5 MD5  Hex-encoded MD5 string of the host public key. (SSH)
+         -0, --http1.0       Use HTTP 1.0 (H)
+             --http1.1       Use HTTP 1.1 (H)
+             --http2         Use HTTP 2 (H)
+             --http2-prior-knowledge  Use HTTP 2 without HTTP/1.1 Upgrade (H)
+             --ignore-content-length  Ignore the HTTP Content-Length header
+         -i, --include       Include protocol headers in the output (H/F)
+         -k, --insecure      Allow connections to SSL sites without certs (H)
+             --interface INTERFACE  Use network INTERFACE (or address)
+         -4, --ipv4          Resolve name to IPv4 address
+         -6, --ipv6          Resolve name to IPv6 address
+         -j, --junk-session-cookies  Ignore session cookies read from file (H)
+             --keepalive-time SECONDS  Wait SECONDS between keepalive probes
+             --key KEY       Private key file name (SSL/SSH)
+             --key-type TYPE  Private key file type (DER/PEM/ENG) (SSL)
+             --krb LEVEL     Enable Kerberos with security LEVEL (F)
+             --libcurl FILE  Dump libcurl equivalent code of this command line
+             --limit-rate RATE  Limit transfer speed to RATE
+         -l, --list-only     List only mode (F/POP3)
+             --local-port RANGE  Force use of RANGE for local port numbers
+         -L, --location      Follow redirects (H)
+             --location-trusted  Like '--location', and send auth to other hosts (H)
+             --login-options OPTIONS  Server login options (IMAP, POP3, SMTP)
+         -M, --manual        Display the full manual
+             --mail-from FROM  Mail from this address (SMTP)
+             --mail-rcpt TO  Mail to this/these addresses (SMTP)
+             --mail-auth AUTH  Originator address of the original email (SMTP)
+             --max-filesize BYTES  Maximum file size to download (H/F)
+             --max-redirs NUM  Maximum number of redirects allowed (H)
+         -m, --max-time SECONDS  Maximum time allowed for the transfer
+             --metalink      Process given URLs as metalink XML file
+             --negotiate     Use HTTP Negotiate (SPNEGO) authentication (H)
+         -n, --netrc         Must read .netrc for user name and password
+             --netrc-optional  Use either .netrc or URL; overrides -n
+             --netrc-file FILE  Specify FILE for netrc
+         -:, --next          Allows the following URL to use a separate set of options
+             --no-alpn       Disable the ALPN TLS extension (H)
+         -N, --no-buffer     Disable buffering of the output stream
+             --no-keepalive  Disable keepalive use on the connection
+             --no-npn        Disable the NPN TLS extension (H)
+             --no-sessionid  Disable SSL session-ID reusing (SSL)
+             --noproxy       List of hosts which do not use proxy
+             --ntlm          Use HTTP NTLM authentication (H)
+             --ntlm-wb       Use HTTP NTLM authentication with winbind (H)
+             --oauth2-bearer TOKEN  OAuth 2 Bearer Token (IMAP, POP3, SMTP)
+         -o, --output FILE   Write to FILE instead of stdout
+             --pass PASS     Pass phrase for the private key (SSL/SSH)
+             --path-as-is    Do not squash .. sequences in URL path
+             --pinnedpubkey FILE/HASHES Public key to verify peer against (SSL)
+             --post301       Do not switch to GET after following a 301 redirect (H)
+             --post302       Do not switch to GET after following a 302 redirect (H)
+             --post303       Do not switch to GET after following a 303 redirect (H)
+             --preproxy [PROTOCOL://]HOST[:PORT] Proxy before HTTP(S) proxy
+         -#, --progress-bar  Display transfer progress as a progress bar
+             --proto PROTOCOLS  Enable/disable PROTOCOLS
+             --proto-default PROTOCOL  Use PROTOCOL for any URL missing a scheme
+             --proto-redir PROTOCOLS   Enable/disable PROTOCOLS on redirect
+         -x, --proxy [PROTOCOL://]HOST[:PORT]  Use proxy on given port
+             --proxy-anyauth  Pick "any" proxy authentication method (H)
+             --proxy-basic   Use Basic authentication on the proxy (H)
+             --proxy-digest  Use Digest authentication on the proxy (H)
+             --proxy-cacert FILE CA certificate to verify peer against for proxy (SSL)
+             --proxy-capath DIR CA directory to verify peer against for proxy (SSL)
+             --proxy-cert CERT[:PASSWD] Client certificate file and password for proxy (SSL)
+             --proxy-cert-type TYPE Certificate file type (DER/PEM/ENG) for proxy (SSL)
+             --proxy-ciphers LIST SSL ciphers to use for proxy (SSL)
+             --proxy-crlfile FILE Get a CRL list in PEM format from the given file for proxy
+             --proxy-insecure Allow connections to SSL sites without certs for proxy (H)
+             --proxy-key KEY Private key file name for proxy (SSL)
+             --proxy-key-type TYPE Private key file type for proxy (DER/PEM/ENG) (SSL)
+             --proxy-negotiate  Use HTTP Negotiate (SPNEGO) authentication on the proxy (H)
+             --proxy-ntlm    Use NTLM authentication on the proxy (H)
+             --proxy-header LINE Pass custom header LINE to proxy (H)
+             --proxy-pass PASS Pass phrase for the private key for proxy (SSL)
+             --proxy-ssl-allow-beast Allow security flaw to improve interop for proxy (SSL)
+             --proxy-tlsv1   Use TLSv1 for proxy (SSL)
+             --proxy-tlsuser USER TLS username for proxy
+             --proxy-tlspassword STRING TLS password for proxy
+             --proxy-tlsauthtype STRING TLS authentication type for proxy (default SRP)
+             --proxy-service-name NAME  SPNEGO proxy service name
+             --service-name NAME  SPNEGO service name
+         -U, --proxy-user USER[:PASSWORD]  Proxy user and password
+             --proxy1.0 HOST[:PORT]  Use HTTP/1.0 proxy on given port
+         -p, --proxytunnel   Operate through a HTTP proxy tunnel (using CONNECT)
+             --pubkey KEY    Public key file name (SSH)
+         -Q, --quote CMD     Send command(s) to server before transfer (F/SFTP)
+             --random-file FILE  File for reading random data from (SSL)
+         -r, --range RANGE   Retrieve only the bytes within RANGE
+             --raw           Do HTTP "raw"; no transfer decoding (H)
+         -e, --referer       Referer URL (H)
+         -J, --remote-header-name  Use the header-provided filename (H)
+         -O, --remote-name   Write output to a file named as the remote file
+             --remote-name-all  Use the remote file name for all URLs
+         -R, --remote-time   Set the remote file's time on the local output
+         -X, --request COMMAND  Specify request command to use
+             --resolve HOST:PORT:ADDRESS  Force resolve of HOST:PORT to ADDRESS
+             --retry NUM   Retry request NUM times if transient problems occur
+             --retry-connrefused  Retry on connection refused (use with --retry)
+             --retry-delay SECONDS  Wait SECONDS between retries
+             --retry-max-time SECONDS  Retry only within this period
+             --sasl-ir       Enable initial response in SASL authentication
+         -S, --show-error    Show error. With -s, make curl show errors when they occur
+         -s, --silent        Silent mode (don't output anything)
+             --socks4 HOST[:PORT]  SOCKS4 proxy on given host + port
+             --socks4a HOST[:PORT]  SOCKS4a proxy on given host + port
+             --socks5 HOST[:PORT]  SOCKS5 proxy on given host + port
+             --socks5-hostname HOST[:PORT]  SOCKS5 proxy, pass host name to proxy
+             --socks5-gssapi-service NAME  SOCKS5 proxy service name for GSS-API
+             --socks5-gssapi-nec  Compatibility with NEC SOCKS5 server
+         -Y, --speed-limit RATE  Stop transfers below RATE for 'speed-time' secs
+         -y, --speed-time SECONDS  Trigger 'speed-limit' abort after SECONDS (default: 30)
+             --ssl           Try SSL/TLS (FTP, IMAP, POP3, SMTP)
+             --ssl-reqd      Require SSL/TLS (FTP, IMAP, POP3, SMTP)
+         -2, --sslv2         Use SSLv2 (SSL)
+         -3, --sslv3         Use SSLv3 (SSL)
+             --ssl-allow-beast  Allow security flaw to improve interop (SSL)
+             --ssl-no-revoke    Disable cert revocation checks (WinSSL)
+             --stderr FILE   Where to redirect stderr (use "-" for stdout)
+             --suppress-connect-headers  Suppress proxy CONNECT response headers
+             --tcp-nodelay   Use the TCP_NODELAY option
+             --tcp-fastopen  Use TCP Fast Open
+         -t, --telnet-option OPT=VAL  Set telnet option
+             --tftp-blksize VALUE  Set TFTP BLKSIZE option (must be >512)
+             --tftp-no-options  Do not send TFTP options requests
+         -z, --time-cond TIME   Transfer based on a time condition
+         -1, --tlsv1         Use >= TLSv1 (SSL)
+             --tlsv1.0       Use TLSv1.0 (SSL)
+             --tlsv1.1       Use TLSv1.1 (SSL)
+             --tlsv1.2       Use TLSv1.2 (SSL)
+             --tlsv1.3       Use TLSv1.3 (SSL)
+             --tls-max VERSION  Use TLS up to VERSION (SSL)
+             --trace FILE    Write a debug trace to FILE
+             --trace-ascii FILE  Like --trace, but without hex output
+             --trace-time    Add time stamps to trace/verbose output
+             --tr-encoding   Request compressed transfer encoding (H)
+         -T, --upload-file FILE  Transfer FILE to destination
+             --url URL       URL to work with
+         -B, --use-ascii     Use ASCII/text transfer
+         -u, --user USER[:PASSWORD]  Server user and password
+             --tlsuser USER  TLS username
+             --tlspassword STRING  TLS password
+             --tlsauthtype STRING  TLS authentication type (default: SRP)
+             --unix-socket PATH    Connect through this Unix domain socket
+             --abstract-unix-socket PATH Connect to an abstract Unix domain socket
+         -A, --user-agent STRING  Send User-Agent STRING to server (H)
+         -v, --verbose       Make the operation more talkative
+         -V, --version       Show version number and quit
+         -w, --write-out FORMAT  Use output FORMAT after completion
+             --xattr         Store metadata in extended file attributes
+         -q, --disable       Disable .curlrc (must be first parameter)
+- curl重要参数
+    - -H "Content-Type:application/json" 消息头设置
+    - -u username:password 用户认证
+    - -d 要发送的post数据@file 表示来自于文件
+    - --data-urlencode 'page_size=50' 对内容进行url编码
+    - -G 把data数据当成get请求的参数发送，长与--data-urlencode结合使用
+    - -o 写文件
+    - -x 代理http代理 socks5代理
+    - -v verbose打印更详细日志
+    - -s关闭一些提示输出
+- curl命令实战
+
+        url=http://www.baidu.com
+        ## get请求加json解析 
+        curl -s 'https://xueqiu.com/stock/search.json?code=sogo&size=3&page=1' -H 'Connection: keep-alive' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'Accept: application/json, text/plain, */*' -H 'Sec-Fetch-Dest: empty' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36' -H 'elastic-apm-traceparent: 00-760301b0a132e9a4c0f5ac7448a3419e-8823be75504fc61f-00' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-Fetch-Mode: cors' -H 'Referer: https://xueqiu.com/k?q=sogo' -H 'Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7' -H 'Cookie: device_id=24700f9f1986800ab4fcc880530dd0ed; cookiesu=841584103115161; aliyungf_tc=AQAAAIPytE8aVQoAXhjf3cw3R+j5DD/s; acw_tc=2760824b15851452106833674e25941ad47588d5d7ded79b38a04dad8f9444; xq_a_token=2ee68b782d6ac072e2a24d81406dd950aacaebe3; xqat=2ee68b782d6ac072e2a24d81406dd950aacaebe3; xq_r_token=f9a2c4e43ce1340d624c8b28e3634941c48f1052; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTU4NzUyMjY2MSwiY3RtIjoxNTg1MTQ1MTYxMDIwLCJjaWQiOiJkOWQwbjRBWnVwIn0.TPrw6_M2Th9QTVz5spwUybqN1790nJANu9kxXl4GfNb1eQ2p2zD43CStgogOGQ8yRXYmSCfURp0343wgjnnCdnQX5698Jl-brdP94wiYKwv11q8QjBYMXFWJGRj0g69C2nxVrRF8K-ETGEked3KjYfk8Xy2wPuZtyGUhORWeCvMhmBdcRKIlWj4d7wp-w_LjMbSLigJAT29F03wBZIxR0r3eMNUhUsXh8dCsWNb6wzhtg8dT4gcd91mQmR5ToR_SFrzQfOopY4vQGcaOHWaAwUMPLUopZwD4ajWzm1kpoBZnf_n_9uBfT4j0nGk95E8J8EmTfBlq-1p019xkhgp87w; u=431585145210698; Hm_lvt_1db88642e346389874251b5a1eded6e3=1583285031,1584102200,1585145180; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1585145192' --compressed | jq
+        {
+          "q": "sogo",
+          "page": 1,
+          "size": 3,
+          "stocks": [
+            {
+              "code": "SOGO",
+              "name": "搜狗",
+              "enName": "",
+              "hasexist": "false",
+              "flag": null,
+              "type": 0,
+              "stock_id": 1029472,
+              "ind_id": 0,
+              "ind_name": "通讯业务",
+              "ind_color": null,
+              "_source": "sc_1:1:sogo"
+            }
+          ]
+        }
+        
+        
+        #post请求
+        curl 'http://sonarqube.testing-studio.com:9000/api/authentication/login' -H 'Connection: keep-alive' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'Accept: application/json' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://sonarqube.testing-studio.com:9000' -H 'Referer: http://sonarqube.testing-studio.com:9000/sessions/new' -H 'Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7' -H 'Cookie: _ga=GA1.2.232181868.1566982077; experimentation_subject_id=IjNlYzgxODQ1LTU2MDAtNGIyNy1iNTgzLTE1MzRkY2IwMDI0ZSI%3D--b1f29d33f6a2c85a81be66e4774d437f710c102f; _gid=GA1.2.482544306.1585051015' --data 'login=admin&password=1234' --compressed --insecure
+        
+        #百度的一个url提交脚本
+        curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls"
+        
+        #对参数编码并发送get请求
+            curl -G $url  \
+                --data-urlencode "current=$current" \
+                --data-urlencode "pageSize=$pageSize" 
+        
+        
+        #认证与put上传都ElasticSearch里
+            curl -X PUT "$ES_HOST/$index/_doc/$id?pretty" \
+                --user username:password \
+                -H 'Content-Type: application/json' \
+                -d "$content"
+        
+        
+        #查看邮箱
+        curl -s --user $mail_username:$mail_password "imaps://imap.exmail.qq.com/inbox?all"
+
+`
+
+### 代理工具
+- 常用代理工具
+    - 代理工具：charles、burpsuite、fiddler、mitmproxy
+    - 高性能代理服务器：squid、dante
+    - 反向代理：nginx
+    - 流量转发与复制：em-proxy、gor、iptable、nginx
+    - socks5代理：ssh -d参数
+- nc(netcat):一个简单而有用的工具，透过使用TCP或UDP协议的网络连接去读写数据
+    - 使用nc简易演示代理实现
+    - nc -lk 8080 < /tmp/fifo | sed -l -e 's/^Host.*/Host:site.baidu.com/' | tee -a /tmp/req.log | nc site.baidu.com 80 | tee -a /tmp/res >/tmp/fifo
+            
+            nc -lk 8080</tmp/fifo \
+            | sed -l -e 's/^Host.*/Host:
+            site.baidu.com/' \
+            | tee -a /tmp/req.log \
+            | nc site.baidu.com 80 \
+            | tee -a /tmp/res> /tmp/fifo
+- 优秀代理工具必备特性
+    - 代理功能：http/https、socks5
+    - 请求模拟工具：拼装请求、重放请求、重复请求
+    - 网络环境模拟：限速、超时、返回异常
+    - mock：请求修改、响应修改
+    - fake：用测试环境替代真实环境
+- 推荐工具
+    - charles：开发/测试工程师必备
+    - mitmproxy：测试开发工程师必备
+    - zap：测试工程师安全测试工具
+    - burpsuite：黑客必备渗透测试工具
+    - fiddler：跨平台支持不好，不推荐
+    - postman：代理功能太弱，不推荐
+
+### http/https抓包分析 
+- 代理配置步骤
+    - 配置代理
+    - 获取证书:http://chls.pro/ssl
+    - 安装证书:mac上安装并设置信任
+    - 信任证书
+- mock实战-数据修改演示
+    - 雪球股票展示测试
+    - 数据修改演示
+    - 选择Tools-Rewrite settings，以Hogwarts为例
+- mock实战-数据加倍演示
+    - 雪球股票展示测试
+    - 数据加倍演示
+    - 操作：
+        - vi /tmp/stock_demo
+        - raw=$(cat /tmp/stock_demo)
+        - raw=$(echo "$raw" | jq '.data.items+=.data.items' | jq '.data.items_size+=.data.items_size')
+        - echo "$raw" > /tmp/mock.json
+        - 针对某一个接口，选择Map Local，Map To的local path填写/tmp/mock.json
+- 使用总结
+    - rewrite：简单mock
+    - map local：复杂mock
+    - map remote：整体测试环境
+    
+### http协议讲解
+- http报文结构
+    - 请求报文：请求行、首部行、实体主体
+    - 响应报文：状态行、首部行、实体主体
+- 请求报文方法：
+    - OPTION/GET/POST/HEAD/PUT/DELETE/TRACE/CONNECT
+- 常见状态码
+    - 1xx：通知信息。
+    - 2xx：成功。
+    - 3xx：重定向。
+    - 4xx：客户端错误。
+    - 5xx：服务端错误
+- curl命令：后面加上 -v 2>&1 >1.log
+
+### session、cookie、token区别解析
+- session与cookie区别
+    - cookie：浏览器接受服务器的Set-Cookie指令，并把cookie保存到电脑上，
+    每一个网站保存的cookie只作用于自己的网站
+    - session：数据存储到服务器，只把关联数据的一个加密串放到cookie中标记
+- session与token的区别
+    - token是一个用户请求时附带的请求字段，用于验证身份与权限
+    - session可以基于cookie，也可以基于query参数，用于关联用户相关数据
+    - 跨端应用的时候，比如android原生系统不支持cookie
+        - 需要用token识别用户
+        - 需要把sessionid保存到http请求中的header或者query字段中
+### mitmproxy抓包工具
+- 类似于WireShark、Filddler，并且它支持抓取HTTP和HTTPS协议的数据包
+- https://www.jianshu.com/p/036e5057f0b9
+- 有两个非常有用的组件，一个mitmdump，它是mitmproxy的命令行接口，利用它可以对接python脚本；另一个是mitmweb，它是一个web程序，通过它可以清楚的观察mitmproxy捕获的数据情况，优点类似于Chrome浏览器。
