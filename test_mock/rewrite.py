@@ -7,7 +7,9 @@
 @time: 2021/3/22 14:17
 @Email: Warron.Wang
 '''
+import sys
 
+from mitmproxy.tools.cmdline import mitmdump
 
 """
 Basic skeleton of a mitmproxy addon.
@@ -40,3 +42,12 @@ class Counter:
 addons = [
     Counter()
 ]
+
+# if __name__ == '__main__':
+#     listen = 8080
+#     sys.argv = [
+#         __file__,
+#         "-p", str(listen),
+#         "-s", __file__
+#     ]
+#     mitmdump()
