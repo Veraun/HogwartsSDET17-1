@@ -1,2 +1,10 @@
-Fri, 19 Feb 2021 15:06:32 __init__.py[line:28] INFO item.name : test_yaml
-Fri, 19 Feb 2021 15:06:32 __init__.py[line:29] INFO item._nodeid : test_yaml.py::test_yaml
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:28] INFO item.name : test_div_int_normal[int]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_div_int_normal[int]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:28] INFO item.name : test_div_int_normal[bigNum]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_div_int_normal[bigNum]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:28] INFO item.name : test_div_int_normal[zero]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_div_int_normal[zero]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:28] INFO item.name : test_div_int_normal[float]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_div_int_normal[float]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:28] INFO item.name : test_div_int_normal[minus]
+Sun, 21 Mar 2021 13:33:41 __init__.py[line:29] INFO item._nodeid : test_calculatorNew.py::TestCalc::test_div_int_normal[minus]

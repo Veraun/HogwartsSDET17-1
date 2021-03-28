@@ -1,0 +1,2 @@
+Fri, 26 Mar 2021 15:26:24 __init__.py[line:28] INFO item.name : test_get_information
+Fri, 26 Mar 2021 15:26:24 __init__.py[line:29] INFO item._nodeid : test_demo.py::TestAddress::test_get_information

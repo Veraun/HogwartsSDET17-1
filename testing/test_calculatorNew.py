@@ -75,6 +75,7 @@ class TestCalc:
     @allure.story("div Integer normal Function")
     def test_div_int_normal(self, get_instance, get_div_int_normal_datas_with_fixture):
         f = get_div_int_normal_datas_with_fixture
+        print("f",f)
         assert f[2] == get_instance.div(f[0], f[1])
 
     @allure.title("div_{get_div_int_error_datas_with_fixture[0]}_{get_div_int_error_datas_with_fixture[1]}")

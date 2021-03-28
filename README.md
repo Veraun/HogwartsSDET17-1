@@ -1,3 +1,8 @@
+## 专题：linux命令&bash脚本
+
+
+
+
 ## 第一部分---pytest实战
 霍格沃兹测开17期实战演练---计算器
 
@@ -302,8 +307,51 @@ des_caps = {
    - weditor：https://www.cnblogs.com/RuguoCheng/p/10457637.html
 
 ### 微信小程序测试
- 
- 
+- 小程序自动化测试关键步骤
+    - 设置chromedriver正确版本
+    - 设置chrome option传递给chromedriver
+    - 使用adb proxy解决fix chromedriver的bug
+    
+- 微信小程序自动化测试辅助工具adb proxy
+
+        使用代理技术解决了chromedriver和微信定制的chrome内核之间的调试问题，可以用于微信小程序的自动化测试。
+
+- shell mock技术
+
+        用于欺骗adb和appium，选择合适的chromedriver版本。个人使用可以先简单使用chromedriverExecutable代替
+
+- 协议mock adb proxy实现
+    - 运行命令
+
+            mitmdump -p 5038 \
+              --rawtcp --mode reverse:http://localhost:5037  \
+              -s adb_proxy.py
+  
+- 辅助小程序测试的adb_proxy.py
+
+        """
+        测试人社区 https://ceshiren.com
+        mitmdump -p 5038 --rawtcp --mode reverse:http://localhost:5037/ -s adb.py
+        """
+        from mitmproxy.utils import strutils
+        from mitmproxy import ctx
+        from mitmproxy import tcp
+        
+        
+        def tcp_message(flow: tcp.TCPFlow):
+            message = flow.messages[-1]
+            old_content = message.content
+            #message.content = old_content.replace(b"foo", b"bar")
+            message.content = old_content.replace(b"@webview_devtools_remote_", b"@.*.*.*._devtools_remote_")
+        
+            ctx.log.info(
+                "[tcp_message{}] from {} to {}:\n{}".format(
+                    " (modified)" if message.content != old_content else "",
+                    "client" if message.from_client else "server",
+                    "server" if message.from_client else "client",
+                    strutils.bytes_to_escaped_str(message.content))
+            )
+
  
 ************************************************
 ************************************************ 

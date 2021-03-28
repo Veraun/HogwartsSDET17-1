@@ -1,2 +1,0 @@
-Fri, 19 Feb 2021 19:22:07 __init__.py[line:28] INFO item.name : test_myinfo
-Fri, 19 Feb 2021 19:22:07 __init__.py[line:29] INFO item._nodeid : test_dingweipytest.py::TestDW::test_myinfo

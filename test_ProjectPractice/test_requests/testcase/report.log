@@ -1,0 +1,8 @@
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:28] INFO item.name : test_update_member[warron_tmp1]
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:29] INFO item._nodeid : TestAddress.py::TestAddress::test_update_member[warron_tmp1]
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:28] INFO item.name : test_update_member[warron_tmp2]
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:29] INFO item._nodeid : TestAddress.py::TestAddress::test_update_member[warron_tmp2]
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:28] INFO item.name : test_update_member[warron_tmp3]
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:29] INFO item._nodeid : TestAddress.py::TestAddress::test_update_member[warron_tmp3]
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:28] INFO item.name : test_update_member[warron_tmp4]
+Sun, 28 Mar 2021 22:28:43 __init__.py[line:29] INFO item._nodeid : TestAddress.py::TestAddress::test_update_member[warron_tmp4]
