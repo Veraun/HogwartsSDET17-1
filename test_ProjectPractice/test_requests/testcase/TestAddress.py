@@ -9,20 +9,23 @@
 '''
 import pytest
 
-from test_ProjectPractice.test_requests.wework.WeWorkAddress import WeWorkAddress
+from test_ProjectPractice.test_requests.wework.wework_address import WeWorkAddress
 
 
 class TestAddress:
     name = "warron_"
+    user_id = "warron018"
+
     def setup_class(self):
         self.address = WeWorkAddress()
         # 初始化 测试数据
-        self.user_id = "warron018"
+        # self.user_id = "warron018"
         # self.name = "沃伦"
         self.mobile = "13671890000"
         self.department = [1]
 
     def setup(self):
+        self.user_id += 'tmp'
         self.address.delete_member(self.user_id)
 
     def teardown(self):
@@ -47,14 +50,15 @@ class TestAddress:
         info = self.address.get_information(self.user_id)
         assert info["name"] == self.name
 
-    @pytest.mark.parametrize("new_name", [name+"tmp1", name+"tmp2", name+"tmp3", name+"tmp4"])
-    def test_update_member(self, new_name):
-        self.address.create_member(self.user_id, self.name, self.mobile, self.department)
+    @pytest.mark.parametrize("user_id, new_name", [("tmp", name+"tmp")]* 10)
+    def test_update_member(self, user_id, new_name):
+        user_id = self.user_id
+        self.address.create_member(user_id, self.name, self.mobile, self.department)
         # new_name = self.name + 'tmp'
-        r = self.address.update_member(self.user_id, new_name)
+        r = self.address.update_member(user_id, new_name)
         assert r.get("errmsg") == "updated"
         # 断言
-        info = self.address.get_information(self.user_id)
+        info = self.address.get_information(user_id)
         assert info["name"] == new_name
 
     def test_delete_member(self):
