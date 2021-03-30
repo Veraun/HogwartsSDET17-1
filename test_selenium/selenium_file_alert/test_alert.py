@@ -34,9 +34,11 @@ class TestAlert(Base):
         :return:
         '''
         self.driver.get("https://www.runoob.com/try/try.php?filename=jqueryui-api-droppable")
+        #1切换到frame下
         self.driver.switch_to.frame("iframeResult")
         drag = self.driver.find_element_by_id("draggable")
         drop = self.driver.find_element_by_id("droppable")
+        #2拖拽元素
         action = ActionChains(self.driver)
         action.drag_and_drop(drag, drop)
         action.perform()
@@ -44,5 +46,8 @@ class TestAlert(Base):
         print("点击alert 确认")
         self.driver.switch_to.alert.accept() #接受现有警告框
 
+        #3.切换到默认frame
         self.driver.switch_to.default_content()
+
+        self.driver.find_element_by_id("submitBTN").click()
         sleep(3)
