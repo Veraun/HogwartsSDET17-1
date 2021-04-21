@@ -7,7 +7,7 @@
 
 from rocketmq.client import Producer, Message
 
-product = Producer("PID-123")
+product = Producer("PID-123") # 随便填写
 product.set_namesrv_addr("ip:port")
 product.start()
 
