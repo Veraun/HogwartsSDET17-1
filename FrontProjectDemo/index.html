@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ msg }} 
+        <div v-if="show">展示</div>
+        <div v-else="show">不展示</div>
+        <div v-show="show1">show</div>
+        <p v-for="(value,index) in arr">{{ value }} -- {{ index }}</p>
+        <p v-for="(value,key,index) in obj">{{ value }} -- {{ key }} -- {{ index }}</p>
+        <p v-for="(value) in objArr">{{ value }} -- {{ value.name }} -- {{ value.age }} -- {{ value.sex }}</p>
+        <button v-on:click="add()">加1</button>
+        <button @click="add()">加1</button>
+        <div>{{ count }}</div>
+
+        <div style="width: 100px;height: 100px;border: 1px solid black;" v-bind:style="bgcolor"></div>
+
+        <input type="text" v-model="text">
+        <button @click="showText">打印</button>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg:'hello world123!',
+                show: false,
+                show1: false,
+                arr: ['qwe','qaz','wsx','edc'],
+                obj: {
+                    name: "zhangsan",
+                    age: 18,
+                    sex: "male"
+                },
+                objArr:[
+                {
+                    name: "zhangsan2",
+                    age: 19,
+                    sex: "male"
+                },
+                {
+                    name: "zhangsan3",
+                    age: 20,
+                    sex: "male"
+                }
+                ],
+                count : 1,
+                bgcolor: {
+                    backgroundColor:'red'
+                },
+                text:123
+            },
+            methods: {
+                add() {
+                    this.count ++
+                },
+                showText() {
+                    console.log(this.text)
+                }
+            },
+            created() {
+                console.log('加载完成')
+            },
+            updated() {
+                console.log('update完成')
+            }
+
+        })
+    </script>
+</body>
+</html>

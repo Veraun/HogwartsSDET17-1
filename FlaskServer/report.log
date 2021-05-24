@@ -1,0 +1,18 @@
+Fri, 14 May 2021 14:23:44 __init__.py[line:28] INFO item.name : test_orm
+Fri, 14 May 2021 14:23:44 __init__.py[line:29] INFO item._nodeid : test_orm.py::test_orm
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO SHOW VARIABLES LIKE 'sql_mode'
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO [raw sql] {}
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO SHOW VARIABLES LIKE 'lower_case_table_names'
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO [generated in 0.00022s] {}
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO SELECT DATABASE()
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO [raw sql] {}
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO BEGIN (implicit)
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO INSERT INTO warron_user (username, password, email) VALUES (%(username)s, %(password)s, %(email)s)
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO [generated in 0.00037s] {'username': 'warron02', 'password': 'password02', 'email': 'warron02@admin.com'}
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO COMMIT
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO BEGIN (implicit)
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO SELECT warron_user.id AS warron_user_id, warron_user.username AS warron_user_username, warron_user.password AS warron_user_password, warron_user.email AS warron_user_email 
+FROM warron_user 
+WHERE warron_user.username = %(username_1)s 
+ LIMIT %(param_1)s
+Fri, 14 May 2021 14:23:44 log.py[line:117] INFO [generated in 0.00073s] {'username_1': 'warron02', 'param_1': 1}
