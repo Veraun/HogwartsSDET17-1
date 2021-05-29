@@ -39,7 +39,6 @@
 
     <v-btn color="primary" class="btn" @click="addDialog = true">添加用例</v-btn>
     <v-btn color="success" class="btn">生成任务</v-btn>
-
     <template>
       <v-data-table
         v-model="selected"
@@ -87,6 +86,18 @@
             value:'caseData'
           },
           {
+            text:'备注',
+            value:'remark'
+          },
+          {
+            text:'创建时间',
+            value:'createTime'
+          },
+          {
+            text:'更新时间',
+            value:'updateTime'
+          },
+          {
             text:'操作',
             value:'operate'
           }
@@ -104,9 +115,28 @@
       this.$api.cases.getCaseList(post_data).then(res=>{
         console.log(res);
         this.desserts = res.data.data.data;
+
+        console.log(this.desserts[0].createTime)
+        res.data.data.data.forEach((item) => {
+          item.createTime = this.timestampToTime(item.createTime);
+          item.updateTime = this.timestampToTime(item.updateTime);
+        });
+        this.desserts = res.data.data.data;
+        console.log(this.desserts[0].createTime)
       })
     },
     methods:{
+      timestampToTime(timestamp){
+        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        var D = date.getDate() + ' ';
+        var h = date.getHours() + ':';
+        var m = date.getMinutes() + ':';
+        var s = date.getSeconds();
+        console.log("haha",Y+M+D+h+m+s)
+        return Y+M+D+h+m+s;
+      },
       addCase(){
         console.log(this.addItem);
         let post_data = {
