@@ -1,0 +1,41 @@
+[ {
+  "uid" : "afb488ccede5c522",
+  "name" : "test_attach_video",
+  "time" : {
+    "start" : 1622191528564,
+    "stop" : 1622191528570,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8c5a95f1552c5bff",
+  "name" : "test_attach_photo",
+  "time" : {
+    "start" : 1622191528559,
+    "stop" : 1622191528562,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b4c8d1b68e50a19b",
+  "name" : "test_attach_text",
+  "time" : {
+    "start" : 1622191528554,
+    "stop" : 1622191528555,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7402a82d036cb55a",
+  "name" : "test_attach_html",
+  "time" : {
+    "start" : 1622191528556,
+    "stop" : 1622191528557,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

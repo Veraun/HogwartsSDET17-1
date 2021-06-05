@@ -1,6 +1,6 @@
-Sun, 07 Feb 2021 09:29:06 __init__.py[line:28] INFO item.name : test_encode[¹şÀû]
-Sun, 07 Feb 2021 09:29:06 __init__.py[line:29] INFO item._nodeid : tests/test_encode.py::test_encode[¹şÀû]
-Sun, 07 Feb 2021 09:29:06 __init__.py[line:28] INFO item.name : test_encode[ºÕÃô]
-Sun, 07 Feb 2021 09:29:06 __init__.py[line:29] INFO item._nodeid : tests/test_encode.py::test_encode[ºÕÃô]
-Sun, 07 Feb 2021 09:29:06 test_encode.py[line:8] INFO test data: ¹şÀû
-Sun, 07 Feb 2021 09:29:06 test_encode.py[line:8] INFO test data: ºÕÃô
+Sat, 05 Jun 2021 15:24:25 __init__.py[line:28] INFO item.name : test_encode[å“ˆåˆ©]
+Sat, 05 Jun 2021 15:24:25 __init__.py[line:29] INFO item._nodeid : tests/test_encode.py::test_encode[å“ˆåˆ©]
+Sat, 05 Jun 2021 15:24:25 __init__.py[line:28] INFO item.name : test_encode[èµ«æ•]
+Sat, 05 Jun 2021 15:24:25 __init__.py[line:29] INFO item._nodeid : tests/test_encode.py::test_encode[èµ«æ•]
+Sat, 05 Jun 2021 15:24:25 test_encode.py[line:8] INFO test data: å“ˆåˆ©
+Sat, 05 Jun 2021 15:24:25 test_encode.py[line:8] INFO test data: èµ«æ•

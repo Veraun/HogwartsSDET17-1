@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 @author: wangwei
 @project: HogwartsSDET17
-@file: test_a.py
+@file: test_a_1.py
 @time: 2021/5/25 10:13
 @Email: Warron.Wang
 '''
@@ -17,7 +17,7 @@
 '''
 命令：
 pytest --help查看
-pytest test_a.py -v
+pytest test_a_1.py -v
 pytest -k test_b -v
 pytest -k 'test_b or test_a' -v
 
@@ -40,6 +40,8 @@ def test_answer1():
 
 
 class TestDemo:
+    # def __init__(self):
+    #     pass
     def test_a(self):
         print("a")
 
@@ -50,5 +52,5 @@ class TestDemo:
         print("c")
 
 if __name__ == '__main__':
-    # pytest.main(['test_a.py'])
-    pytest.main(['test_a.py::TestDemo', '-v'])
+    # pytest.main(['test_a_1.py'])
+    pytest.main(['test_a_1.py::TestDemo', '-v'])

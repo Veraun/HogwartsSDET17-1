@@ -14,12 +14,7 @@ from flask_restful import Resource, Api
 
 app = Flask(__name__)
 # 配置数据库的详细信息
-'''
-    host='192.168.60.11',
-    user='naliworld',
-    password='password!',
-'''
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://naliworld:password!@192.168.60.11:3306/test_backend_17'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@host:port/test_backend_17'
 # 初始化一个db
 db = SQLAlchemy(app)
 

@@ -27,7 +27,24 @@ def pytest_collection_modifyitems(items):
         item._nodeid = item._nodeid.encode('utf-8').decode('unicode_escape')
         logger.info(f"item.name : {item.name}")
         logger.info(f"item._nodeid : {item._nodeid}")
-        if "add" in item._nodeid:
-            item.add_marker(pytest.mark.add)
-        elif 'div' in item._nodeid:
-            item.add_marker(pytest.mark.div)
+        # 加标签
+        # if "add" in item._nodeid:
+        #     item.add_marker(pytest.mark.add)
+        # elif 'div' in item._nodeid:
+        #     item.add_marker(pytest.mark.div)
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    # 获取方法的调用结果
+    out = yield
+    print('out >>>', out)
+    # 钩子方法的调用结果中获取测试报告
+    report = out.get_result()
+    if report.when == "call":
+        logger.info("encoding......")
+        logger.info("用例名：%s" % report.nodeid)
+        logger.info("运行结果：%s ***" % report.outcome)
+        logger.info("运行完整描述：%s ***" % report.longreprtext)
+
+

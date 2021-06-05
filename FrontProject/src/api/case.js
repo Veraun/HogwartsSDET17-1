@@ -10,5 +10,5 @@ const cases = {
   createCaseByFile(params){
     return axios.post('/testCase/text', params)
   }
-}
+};
 export default cases;

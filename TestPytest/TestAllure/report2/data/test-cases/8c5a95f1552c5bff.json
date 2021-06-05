@@ -1,0 +1,66 @@
+{
+  "uid" : "8c5a95f1552c5bff",
+  "name" : "test_attach_photo",
+  "fullName" : "test_attach_5#test_attach_photo",
+  "historyId" : "d79968a0d964e1e7dd7c1daed25b5bcd",
+  "time" : {
+    "start" : 1622191528559,
+    "stop" : 1622191528562,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "2e3ebe0b3d7e410f",
+      "name" : "这是一张图片",
+      "source" : "2e3ebe0b3d7e410f.jpg",
+      "type" : "image/jpg",
+      "size" : 73939
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "test_attach_5"
+  }, {
+    "name" : "host",
+    "value" : "warronMacBook-Pro.local"
+  }, {
+    "name" : "thread",
+    "value" : "3820-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_attach_5"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "8c5a95f1552c5bff.json",
+  "parameterValues" : [ ]
+}

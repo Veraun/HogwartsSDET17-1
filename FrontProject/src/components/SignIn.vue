@@ -1,8 +1,9 @@
 <template>
   <div class="login-form">
     <h1>登录</h1>
-    <v-text-field label="用户名" v-model="username"></v-text-field>
-    <v-text-field label="密码" type="password" v-model="password"></v-text-field>
+    <v-text-field label="用户名" v-model="username" outlined clearable></v-text-field>
+    <v-text-field label="密码" type="password" v-model="password" outlined clearable></v-text-field>
+
     <v-btn color="primary" @click="login()">登录</v-btn>
     <v-btn color="primary" text @click="signUp()">注册</v-btn>
 
@@ -21,6 +22,7 @@
       signUp(){
         console.log('123')
         // 实现跳转
+        // this.$router.push :把一个路由推入栈
         this.$router.push({name:'SignUp'})
       },
       login(){
@@ -46,8 +48,11 @@
 
 <style scoped>
   .login-form{
+    /*设置长度*/
     width: 500px;
+    /*将整个标签居中*/
     margin: 0 auto;
+    /*将文本和按钮居中*/
     text-align: center;
   }
 </style>

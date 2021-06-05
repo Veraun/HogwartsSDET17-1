@@ -7,5 +7,5 @@ const user = {
   signUp(params){
     return axios.post('/user/register', params)
   }
-}
+};
 export default user

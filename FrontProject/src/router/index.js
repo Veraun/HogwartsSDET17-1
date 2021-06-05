@@ -11,14 +11,14 @@ import Report from "../components/Report";
 
 
 // 防止路由冗余
-const originalPush = VueRouter.prototype.push
+const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err=> err)
-}
+};
 
 
-Vue.use(VueRouter)
-Vue.use(Vuetify)
+Vue.use(VueRouter);
+Vue.use(Vuetify);
 
 const routes = [
   {
@@ -51,9 +51,9 @@ const routes = [
     name: 'Report',
     component: Report
   }
-]
+];
 
 const router = new VueRouter({
   routes
-})
+});
 export default router

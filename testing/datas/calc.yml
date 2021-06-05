@@ -56,7 +56,3 @@ multiply:
     - [ -2,-4,8 ]
   ids: [ 'int1','int2','bigint1','multiply_zero1','minus1']
 
--
-  - by:id
-  - locator:name
-  - action:click

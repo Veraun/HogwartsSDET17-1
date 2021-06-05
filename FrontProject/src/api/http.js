@@ -4,7 +4,7 @@ var instance = axios.create({
     'Content-Type':'application/json'
   },
   baseURL:'http://stuq.ceshiren.com:8089'
-})
+});
 
 
 // 发送请求的拦截器
@@ -14,7 +14,7 @@ instance.interceptors.request.use(config=>{
     config.headers.common['token'] = localStorage.getItem('token')
   }
   return config
-})
+});
 
 
 export default instance

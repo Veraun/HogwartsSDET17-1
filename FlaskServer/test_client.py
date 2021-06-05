@@ -11,10 +11,10 @@
 import pymysql
 
 db = pymysql.connect(
-    host='192.168.60.11',
-    user='naliworld',
-    password='password!',
-    db='XIMA_BF_ACC',
+    host='',
+    user='',
+    password='',
+    db='',
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor
 )

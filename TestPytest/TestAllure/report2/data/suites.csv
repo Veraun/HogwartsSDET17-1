@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri May 28 16:45:28 CST 2021","Fri May 28 16:45:28 CST 2021","6","","test_attach_5","","","","test_attach_video",""
+"passed","Fri May 28 16:45:28 CST 2021","Fri May 28 16:45:28 CST 2021","3","","test_attach_5","","","","test_attach_photo",""
+"passed","Fri May 28 16:45:28 CST 2021","Fri May 28 16:45:28 CST 2021","1","","test_attach_5","","","","test_attach_text",""
+"passed","Fri May 28 16:45:28 CST 2021","Fri May 28 16:45:28 CST 2021","1","","test_attach_5","","","","test_attach_html",""

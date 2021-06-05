@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2021/1/29 11:43
 # @Author  : Warren.wang
-# @File    : test_setup_teardown.py
+# @File    : test_setup_teardown_3.py
 # @Software: PyCharm
 
 '''
@@ -19,7 +19,7 @@ def setup_module():
 
 
 def teardown_module():
-    print("资源准备：teardown module")
+    print("\n资源销毁：teardown module")
 
 
 def test_case1():
@@ -31,7 +31,7 @@ def setup_function():
 
 
 def teardown_function():
-    print("资源消毁：teardown function")
+    print("\n资源消毁：teardown function")
 
 
 
@@ -42,14 +42,14 @@ class TestDemo:
         print("TestDemo setup_class")
 
     def teardown_class(self):
-        print("TestDemo teardown_class")
+        print("\nTestDemo teardown_class")
 
     # 每个类里面的方法前后分别执行 setup, teardown
     def setup(self):
         print("TestDemo setup")
 
     def teardown(self):
-        print("TestDemo teardown")
+        print("\nTestDemo teardown")
 
     def test_demo1(self):
         print("test demo1")
@@ -65,14 +65,14 @@ class TestDemo1:
         print("TestDemo setup_class")
 
     def teardown_class(self):
-        print("TestDemo teardown_class")
+        print("\nTestDemo teardown_class")
 
     # 每个类里面的方法前后分别执行 setup, teardown
     def setup(self):
         print("TestDemo setup")
 
     def teardown(self):
-        print("TestDemo teardown")
+        print("\nTestDemo teardown")
 
     def test_demo1(self):
         print("test demo1")

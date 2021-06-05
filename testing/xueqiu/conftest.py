@@ -9,6 +9,7 @@ import pytest
 
 
 @pytest.fixture(scope="session")
+# @pytest.fixture(scope="function")
 def login():
     print("登录操作>>>>")
     name = "哈利波特"

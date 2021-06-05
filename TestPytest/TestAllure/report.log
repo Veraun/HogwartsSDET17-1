@@ -1,0 +1,8 @@
+Fri, 28 May 2021 16:45:28 __init__.py[line:28] INFO item.name : test_attach_text
+Fri, 28 May 2021 16:45:28 __init__.py[line:29] INFO item._nodeid : test_attach_5.py::test_attach_text
+Fri, 28 May 2021 16:45:28 __init__.py[line:28] INFO item.name : test_attach_html
+Fri, 28 May 2021 16:45:28 __init__.py[line:29] INFO item._nodeid : test_attach_5.py::test_attach_html
+Fri, 28 May 2021 16:45:28 __init__.py[line:28] INFO item.name : test_attach_photo
+Fri, 28 May 2021 16:45:28 __init__.py[line:29] INFO item._nodeid : test_attach_5.py::test_attach_photo
+Fri, 28 May 2021 16:45:28 __init__.py[line:28] INFO item.name : test_attach_video
+Fri, 28 May 2021 16:45:28 __init__.py[line:29] INFO item._nodeid : test_attach_5.py::test_attach_video

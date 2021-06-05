@@ -4,6 +4,6 @@ import cases from "./case";
 const api = {
   user,
   cases
-}
+};
 
 export default api

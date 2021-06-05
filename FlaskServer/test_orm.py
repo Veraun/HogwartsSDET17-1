@@ -14,9 +14,9 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-host = '192.168.60.11'
-user = 'naliworld'
-password = 'password!'
+host = ''
+user = ''
+password = ''
 db = 'hogwarts_python'
 charset = 'utf8mb4'
 
