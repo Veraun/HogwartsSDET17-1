@@ -111,12 +111,12 @@
       let post_data = {
         pageNum:1,
         pageSize:10
-      }
+      };
       this.$api.cases.getCaseList(post_data).then(res=>{
         console.log(res);
         this.desserts = res.data.data.data;
 
-        console.log(this.desserts[0].createTime)
+        console.log(this.desserts[0].createTime);
         res.data.data.data.forEach((item) => {
           item.createTime = this.timestampToTime(item.createTime);
           item.updateTime = this.timestampToTime(item.updateTime);
@@ -134,7 +134,7 @@
         var h = date.getHours() + ':';
         var m = date.getMinutes() + ':';
         var s = date.getSeconds();
-        console.log("haha",Y+M+D+h+m+s)
+        console.log("haha",Y+M+D+h+m+s);
         return Y+M+D+h+m+s;
       },
       addCase(){
@@ -143,16 +143,16 @@
           caseData:this.addItem.data,
           caseName:this.addItem.name,
           remark:this.addItem.remark
-        }
+        };
         this.$api.cases.createCaseByText(post_data).then(res=>{
-          console.log(res)
+          console.log(res);
           // 关闭弹出层
           this.addDialog = false;
           // 再调列表接口
           let post_data = {
             pageNum:1,
             pageSize:10
-          }
+          };
           this.$api.cases.getCaseList(post_data).then(res=>{
             console.log(res);
             this.desserts = res.data.data.data;

@@ -1,8 +1,9 @@
 import axios from "./http";
 
 const cases = {
-  getCaseList(params){
-    return axios.get('/testCase/list', params)
+  getCaseList(){
+    // return axios.get('/testCase/list', params)
+    return axios.get('/testcase/get')
   },
   createCaseByText(params){
     return axios.post('/testCase/text', params)

@@ -1,0 +1,2 @@
+Sat, 05 Jun 2021 18:01:11 __init__.py[line:28] INFO item.name : test_id_maker
+Sat, 05 Jun 2021 18:01:11 __init__.py[line:29] INFO item._nodeid : singleton_2.py::test_id_maker

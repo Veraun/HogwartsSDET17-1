@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 @author: wangwei
 @project: HogwartsSDET17
-@file: demo2.py
+@file: user_table.py
 @time: 2021/5/24 09:50
 @Email: Warron.Wang
 '''
@@ -18,6 +18,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@host:port/test_backend_17'
 # 初始化一个db
 db = SQLAlchemy(app)
+
 
 # 使用db，可以让类映射到数据库中的User表
 class User(db.Model):
@@ -36,6 +37,7 @@ class Task(db.Model):
 
     def __repr__(self):
         return '<Task %r>' % self.name
+
 
 if __name__ == '__main__':
     # 删库

@@ -8,7 +8,8 @@ import Case from "../components/Case";
 import Jenkins from "../components/Jenkins";
 import Task from "../components/Task";
 import Report from "../components/Report";
-
+import Main from "../components/Main";
+import TestCase from "../components/TestCase";
 
 // 防止路由冗余
 const originalPush = VueRouter.prototype.push;
@@ -22,7 +23,7 @@ Vue.use(Vuetify);
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'SignIn',
     component: SignIn
   },
@@ -30,6 +31,24 @@ const routes = [
     path: '/sign-up',
     name: 'SignUp',
     component: SignUp
+  },
+  // children 代表子路由，子路由加载前，会加载其父路由
+  {
+    path: '/main',
+    name: 'Main',
+    component: Main,
+    children: [
+      {
+        path: '/report',
+        name: 'Report',
+        component: Report
+      },
+      {
+        path: '/testcase',
+        name: 'TestCase',
+        component: TestCase
+      }
+    ]
   },
   {
     path: '/case',
@@ -45,12 +64,8 @@ const routes = [
     path: '/jenkins',
     name: 'Jenkins',
     component: Jenkins
-  },
-  {
-    path: '/report',
-    name: 'Report',
-    component: Report
   }
+
 ];
 
 const router = new VueRouter({
