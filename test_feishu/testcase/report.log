@@ -1,0 +1,2 @@
+Sun, 11 Jul 2021 16:25:46 __init__.py[line:28] INFO item.name : test_crate_member
+Sun, 11 Jul 2021 16:25:46 __init__.py[line:29] INFO item._nodeid : TestCalendar.py::TestCalendar::test_crate_member

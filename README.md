@@ -81,7 +81,8 @@ selenium实战联演
 - 环境设置及启动命令
     - Windows/Linux命令为：chrome --remote-debugging-port=9222 (9222为端口号，可以换成任意一个没有被占用的端口)
     - Mac命令为：Google\ Chrome --remote-debugging-port=9222 (9222为端口号，可以换成任意一个没有被占用的端口) (注意命令中间的反斜线)
-
+- chrome驱动
+    - https://chromedriver.storage.googleapis.com/index.html
 
 ************************************************
 ************************************************ 
