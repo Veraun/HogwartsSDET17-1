@@ -1,5 +1,8 @@
-
-- summary: 1
-  description: number
-- summary: 中文
-  description: 中文字符测试
+normal:
+  datas:
+    - summary: "this is a create testcase"
+      description: "使用开放接口创建日历"
+      permissions: "public"
+      color: 255
+      summary_alias: "日历备注0805"
+  ids: ["public_api"]

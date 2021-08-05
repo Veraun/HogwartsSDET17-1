@@ -7,9 +7,9 @@
 @time: 2021/7/11 17:07
 @Email: Warron.Wang
 '''
+from test_feishu.service.api.calendar.calenda_api import CalendarApi
 
-
-class EventApi:
+class EventApi(CalendarApi):
     '''
     日程管理
     '''

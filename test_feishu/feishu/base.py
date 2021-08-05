@@ -14,7 +14,7 @@ class Base:
         }
         params = {"app_id": "cli_a06fdb373efb100b",
                   "app_secret": "YMw4bRJOfxeOsh58rShffQhIJQaeSVqr"}
-        r = self.s.post(url, headers= headers, params=params)
+        r = self.s.post(url, headers=headers, params=params)
         print(r.json())
         return r.json()['tenant_access_token']
 
