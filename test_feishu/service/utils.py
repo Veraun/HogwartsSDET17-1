@@ -23,6 +23,6 @@ class Utils:
                 return datas[key_words]
         return datas
 
-if __name__ == '__main__':
-    list_normal_data = Utils.load_yaml(r"../data/calendar/list.yml", "normal")
-    print(list_normal_data)
+# if __name__ == '__main__':
+#     list_normal_data = Utils.load_yaml(r"../data/calendar/list.yml", "normal")
+#     print(list_normal_data)
