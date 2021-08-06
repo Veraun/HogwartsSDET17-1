@@ -13,3 +13,6 @@ def test_yaml():
         datas = yaml.safe_load(f)
         print(datas)
         # print(datas["add"]["datas"])
+
+# if __name__ == '__main__':
+#     test_yaml()
